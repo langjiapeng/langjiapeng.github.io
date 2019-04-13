@@ -9,7 +9,7 @@
     <meta name="format-detection" content="telphone=no,email=no">
     <meta name="keywords" content="Lang's Blog">
     <link rel="icon" type="image/x-icon" href="/static/images/icon.png">
-    <title>工具 | Lang&#039;s Blog</title>
+    <title>AscII | Lang&#039;s Blog</title>
 	<link rel='stylesheet' id='fontawe-css'  href='/static/css/font-awesome.min.css' type='text/css' media='all' />
 	<link rel='stylesheet' id='kratos-css'  href='/static/css/kratos.min.css' type='text/css' media='all' />
 	<script type='text/javascript' src='/static/js/jquery.min.js'></script>
@@ -48,14 +48,38 @@
 		<div id="kratos-blog-post" style="background:#f5f5f5">    <div id="container" class="container">
 			<div class="row">
 			  <section id="main" class="col-md-8">
-
-				<h2>小工具</h2>
-				<ul>
-				  <li><a href="/page/ascII.html">AscII转换</a></li>
-				  <li><a href="/page/hex.html">进制转换</a></li>
-				  <li><a href="https://pmjs-my.sharepoint.com/:f:/g/personal/langjiapeng_my365_tw/EqS4qIZ-xU9AnYQEFyBkDOwBp8qfDDIGEMaX2MrEq65QOA?e=V1Dnfh" target="_blank">Public3备用（5TB）</a></li>
-				</ul>
-				
+				<br>
+				<div class="container">
+				  <div class="panel panel-default">
+					<div class="panel-heading">查字符ASCII值</div>
+					<div class="panel-body">
+					  <div class="form-horizontal">
+						<div class="form-group">
+						  <tr>
+<SCRIPT language=JavaScript>
+<!-- Begin
+function showKeyCode()
+{
+var character = document.characterCode.character.value.substring(0,1);
+var code = document.characterCode.character.value.charCodeAt(0);
+var msg = "字符  \""+character+"\" 对应的ASCII码值为 "+code+".";
+alert(msg);
+}
+//  End -->
+</SCRIPT>
+							<FORM name=characterCode>
+							  <p align="center">
+							  输入一个待查字符:  
+							  <INPUT name="character"; id="output_value" class="form-control"p>
+							  <br>
+							  <INPUT onclick="showKeyCode ( )"; type="button" value="显示字符ASCII码值">  
+							</FORM>          
+						  </tr>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
 				<!--文章-->
 				  
 			  </section>
