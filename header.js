@@ -11,6 +11,8 @@ document.writeln('<div id="kratos-header">'+
 '					  </ul>'+
 '					</li>'+
 '					<li><a href="/tools.html"><i class="fa fa-cogs"></i>工具</a></li>'+
+'                   <li><a href="/page/links.html"><i class="fa fa-mars"></i>链接</a></li>'+
+
 '					<li><a href="/about.html"><i class="fa fa-rocket"></i>关于</a></li>'+
 '				  </ul></nav></div>'+
 '			</div>'+
