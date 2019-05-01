@@ -3,7 +3,8 @@ document.writeln('<footer>'+
 '			<div class="container">'+
 '			  <div class="row">'+
 '				<div class="col-md-6 col-md-offset-3 footer-list text-center">'+
-'				  <p> © 2019 <a href="https://langjiapeng.github.io">Lang&#039;s Blog</a>. All Rights Reserved.</p>'+
+'	              <p id="hitokoto"><script>hitokoto ( )</script></p>'+
+'                 <p>© <script>document.write ( new Date ( ).getFullYear ( ) )</script> <a href="https://langjiapeng.github.io" target="_blank">Lang&#039;s Blog</a>.All Rights Reserved.<script src="https://api.fczbl.vip/hitokoto/?charset=utf-8&encode=js"></script></p>'+
 '				</div>'+
 '			  </div>'+
 '			</div>'+
