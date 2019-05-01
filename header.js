@@ -13,6 +13,7 @@ document.writeln('<div id="kratos-header">'+
 '					</li>'+
 '					<li><a><i class="fa fa-cogs"></i> 工具</a>'+
 '					  <ul class="sub-menu">'+
+'						<li><a href="/tools.html">进入</a></li>'+
 '						<li><a href="/page/ascII.html">AscII转换</a></li>'+
 '						<li><a href="/page/rs.html">称谓转换</a></li>'+
 '						<li><a href="/page/unicode.html">Unicode</a></li>'+
