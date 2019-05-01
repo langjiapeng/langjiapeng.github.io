@@ -11,7 +11,13 @@ document.writeln('<div id="kratos-header">'+
 '						<li><a href="/res.html">资源页</a></li>'+
 '					  </ul>'+
 '					</li>'+
-'					<li><a href="/tools.html"><i class="fa fa-cogs"></i> 工具</a></li>'+
+'					<li><a><i class="fa fa-cogs"></i> 工具</a>'+
+'					  <ul class="sub-menu">'+
+'						<li><a href="/page/ascII.html">AscII转换</a></li>'+
+'						<li><a href="/page/rs.html">称谓转换</a></li>'+
+'						<li><a href="/page/unicode.html">Unicode</a></li>'+
+'					  </ul>'+
+'					</li>'+
 '                   <li><a href="/page/links.html"><i class="fa fa-mars"></i> 链接</a></li>'+
 '					<li><a href="/about.html"><i class="fa fa-rocket"></i> 关于</a></li>'+
 '				  </ul></nav></div>'+
