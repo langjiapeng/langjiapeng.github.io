@@ -1,0 +1,270 @@
+
+<!doctype html>
+	<html lang="zh_CN">
+	  <head>
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="/bootstrap">
+
+	    <title>台州市教育局中考成绩查询</title>
+	      <style type="text/css">
+	          @media (min-width: 576px) {
+	              body{
+	        padding:0;
+	    }
+	          }
+
+
+	@media (min-width: 768px) {
+	    body{
+	        padding:5% 15%;
+	    }
+	          }
+
+
+	@media (min-width: 992px) { 
+	          body{
+	            padding:10% 20%;
+	    }
+	          }
+
+	@media (min-width: 1200px) { 
+	          body{
+	            padding:15% 25%;
+	    }
+	          }
+	      </style>
+	  </head>
+	  <body style="background-color: #e1effc">
+	      <div class="container" style="text-align: center; background-color: #3884e4;color:white;font-size:13px;padding:2em;">
+	          
+	  <h2>中考成绩查询</h2>
+	      </div>
+	    <div class="container justify-content-md-center"  style="background-color: #ffffff; padding:2em;">
+	  <!-- Content here -->
+	    <div id="secondary" class="alert alert-secondary" role="alert">
+	  请勿频繁刷新页面!
+	</div>
+	<div id="primary" class="alert alert-primary" role="alert" style="display:none">
+	  正在查询，请耐心等待<span id='s'>0</span>s<span id='spin'></span>
+	</div>
+	<div id="danger" class="alert alert-danger" role="alert" style="display:none">
+	    
+	</div>
+	  <div id="result" style="display:none">
+	  	<div class="alert alert-success" role="alert">
+	  以下是本次查询的成绩
+	</div>
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped table-hover">
+			<tr><th>姓名</th><td><span id='vxm'></span></td><th>准考证号</th><td><span id='vksh'></span></td></tr>
+			<tr><th>语文</th><td><span id='yw'></span></td><th>数学</th><td><span id='sx'></span></td><tr>
+			<tr><th>科学</th><td><span id='kx'></span></td><th>社会</th><td><span id='sh'></span></td><tr>
+			<tr><th>英语</th><td><span id='yy'></span></td><th>文化课总分</th><td><span id='whkzf'></span></td><tr>
+			<tr><th>体育分</th><td><span id='tyf'></span></td><th>特征分</th><td><span id='tzf'></span></td><tr>
+			<tr><th>总分</th><td><span id='zf'></span></td><th></th><td></td><tr>
+		</table>
+	</div>
+	   </div>
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">考生姓名</label>
+	    <input type="text" class="form-control" name="xm" id="xm" aria-describedby="emailHelp" placeholder="">
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">准考证号</label>
+	    <input type="text" class="form-control" name="ksh" id="ksh" placeholder="">
+	  </div>
+	  <button type="button" id="submitbtn" class="mx-auto btn btn-primary" style="background-color:#528fcf" onclick="query()">查询</button>
+	</div>
+	<div class="container" style="background-color: #3c87e4;color:white;font-size:13px;padding:2em;"><div class="mx-auto" style="width: 300px;">
+	  台州市教育局 版权所有 2019 All rights Reserved
+	</div></div>
+	<script>
+		var interval1=null;
+		var interval2=null;
+		var do_fresh=false;
+		var do_timeout=true;
+		function timeout(){
+			if(!do_timeout) return;
+			var alertE = document.getElementById('danger');
+			alertE.innerText='页面已过期，请刷新页面！';
+			alertE.style.display='block';
+			var ksh=document.getElementById('ksh');
+			ksh.parentNode.style.display = "none";
+			var xm=document.getElementById('xm');
+			xm.parentNode.style.display = "none";
+			var btn=document.getElementById('submitbtn');
+			btn.innerText="刷新页面";
+			do_fresh=true;
+		}
+//		function check(){
+//			
+//            return false;
+//    } 
+		setTimeout('timeout()',50000);//50秒后需要重新刷新查询页面
+		function checkForm(){
+        var ksh = document.getElementById("ksh");
+        var xm = document.getElementById("xm");
+        if(xm.value==null || xm.value.trim()==""){
+            alert("请输入姓名");
+            xm.focus();
+            return false;
+        }
+        xm.value=xm.value.trim();
+        
+        if(ksh.value==null || ksh.value.trim()==""){
+            alert("请输入准考证号");
+            ksh.focus();
+            return false;
+        }
+        ksh.value=ksh.value.trim();
+	return true;
+    }
+    //use ajax to post query
+    function query()
+    {
+    	do_timeout=false;
+    	if(do_fresh){
+    		window.location.reload();
+    		return;
+    	}
+    	//获取接受返回信息层
+    	if(!checkForm()){
+	    return;
+	}
+    	var kshE = document.getElementById("ksh");
+        var xmE = document.getElementById("xm");
+    	var ksh = encodeURIComponent(kshE.value.trim());
+    	var xm = encodeURIComponent(xmE.value.trim());
+    	//接收表单的URL地址
+    	var url = "/q";
+    	//需要POST的值，把每个变量都通过&来联接
+    	var postStr = 'ksh='+ ksh+'&xm='+xm;
+    	//实例化Ajax
+    	var ajax = false;
+    	//开始初始化XMLHttpRequest对象
+    	if(window.XMLHttpRequest){ //Mozilla 浏览器
+    		ajax = new XMLHttpRequest();
+    		if (ajax.overrideMimeType){ //设置MiME类别
+    			ajax.overrideMimeType("text/xml");
+    		}
+    	}else if (window.ActiveXObject){ // IE浏览器
+    		try{
+    			ajax = new ActiveXObject("Msxml2.XMLHTTP");
+    		}catch (e){
+    			try{
+    				ajax = new ActiveXObject("Microsoft.XMLHTTP");
+    			}
+    				catch (e) {}
+    		}
+    	}
+    	if (!ajax){ // 异常，创建对象实例失败
+    		window.alert("不能创建XMLHttpRequest对象实例.");
+    		return false;
+    	}
+     
+		//通过Post方式打开连接
+		ajax.open("POST", url, true);
+		//定义传输的文件HTTP头信息
+    	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    	//发送POST数据
+    		ajax.send(postStr);
+    	//等待结果返回
+    	var secondary=document.getElementById('secondary');
+    	secondary.style.display='none';
+    	var ksh=document.getElementById('ksh');
+		ksh.parentNode.style.display = "none";
+		var xm=document.getElementById('xm');
+		xm.parentNode.style.display = "none";
+		var btn=document.getElementById('submitbtn');
+		btn.style.display = "none";
+		var primaryE = document.getElementById('primary');
+		primaryE.style.display='block';
+		interval1=setInterval(spinT,400);
+    	interval2=setInterval(countUp,1000);
+    	//获取执行状态
+    	ajax.onreadystatechange = function(){
+    		if(interval1!=null) clearInterval(interval1);
+            if(interval2!=null) clearInterval(interval2);
+          	var primaryE = document.getElementById('primary');
+			primaryE.style.display='none';
+    		//如果执行状态成功，那么就把返回信息写到指定的层里
+    		if (ajax.readyState == 4 && ajax.status == 200)
+    		{
+    			var res=JSON.parse(ajax.responseText);
+    			if(res.error){
+    				var alertE = document.getElementById('danger');
+					alertE.innerText=res.error;
+					alertE.style.display='block';
+					var btn=document.getElementById('submitbtn');
+					btn.innerText="返回";
+					btn.style.display="block";
+					do_fresh=true;
+    			}else{
+    				document.getElementById('vxm').innerText=res.xm;
+    				document.getElementById('vksh').innerText=res.ksh;
+    				document.getElementById('yw').innerText=res.yw;
+    				document.getElementById('sx').innerText=res.sx;
+    				document.getElementById('kx').innerText=res.kx;
+    				document.getElementById('yy').innerText=res.yy;
+    				document.getElementById('whkzf').innerText=res.whkzf;
+    				document.getElementById('sh').innerText=res.sh;
+    				document.getElementById('tyf').innerText=res.tyf;
+    				document.getElementById('tzf').innerText=res.tzf;
+    				document.getElementById('zf').innerText=res.zf;
+    				
+    				document.getElementById('result').style.display='block';
+    				var btn=document.getElementById('submitbtn');
+					btn.innerText="返回";
+					btn.style.display="block";
+					do_fresh=true;
+    			}
+    			//introducemsg.innerHTML = ajax.responseText;
+    		}else{
+		/*	var alertE = document.getElementById('danger');
+                                        alertE.innerText="请求无响应，请返回重试。";
+                                        alertE.style.display='block';
+                                        var btn=document.getElementById('submitbtn');
+                                        btn.innerText="返回";
+                                        btn.style.display="block";
+                                        do_fresh=true;*/
+		}
+    	}
+    }
+    var spin=1;
+      function spinT(){
+		  var t='';
+		  for(var i=0;i<spin;i++){
+		      t=t+'.';
+		  }
+		  var e = document.getElementById("spin");
+		  e.innerText=t;
+		  if(spin++==6){
+		  	spin=1;
+		  }
+      }
+      var counter=0;
+	  function countUp(){
+		  var t = document.getElementById("s");
+		  counter++;
+          t.innerText=counter;
+          if(counter>60){
+          	//查询超时
+          	if(interval1!=null) clearInterval(interval1);
+          	if(interval2!=null) clearInterval(interval2);
+          	var primaryE = document.getElementById('primary');
+			primaryE.style.display='none';
+			var alertE = document.getElementById('alert');
+			alertE.innerText="查询超时，请刷新页面";
+			alertE.style.display='block';
+			var btn=document.getElementById('submitbtn');
+			btn.innerText="刷新页面";
+			do_fresh=true;
+			btn.style.display='block';
+          }
+      }
+	</script>
+	  </body>
