@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+	<base href="http://exam.dilidasai.com:80/">
+	<title>地球小博士在线</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/media_query.css" rel="stylesheet" type="text/css">
+	<link href="css/paperQues/main.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/main01.css">
+	<!--<script type="text/javascript" src="js/mztreeview2/scripts/jsframework.js"></script>-->
+	<script type="text/javascript" src="js/jquery-1.4.4.js"></script>
+
+<script type="text/javascript">
+
+var boolapp = true;	
+function show_tree(obj) {              
+	if (boolapp)
+	{
+		var offset = $(obj).offset();    
+		$("#divPop").css({ top: offset.top + $(obj).height() + 6 + "px", left: offset.left - 2 });   
+		$("#divPop").css({display:"block"});  
+		boolapp = false;
+	}
+	else
+	{
+		$("#divPop").css({display:"none"});
+		boolapp = true;
+	}	 
+
+}
+
+function category1(id, name) {
+	$("#pcname").attr("value", name);
+	$("#pcid").attr("value", id);
+	$("#pcidTwo").attr("value", id);
+	$("#divPop").css({display:"none"});
+	//$("#checkUploadYN").hide();
+	var cityId = document.getElementById("pcid").value;
+	$.post("loginks!showSchool?cityId=" + encodeURI(cityId), function(data) {
+			   $('#classId').html(data);
+		   })
+	boolapp = true;
+}
+
+
+
+
+
+function changeSelect(varId) {
+	$("#inEarIdS").html("");
+	if (varId == -1)
+	{
+		alert("请选择所在区域！");
+		$("#inEarId").focus();
+		return ;
+	}
+	else
+	{
+		if (varId == 36)
+		{
+			$.post("users!getInearId?userCateId=" + varId, function(data) {
+					   //alert(data);
+					   $("#showOtherId").show();
+					   $("#subId").show();
+					   for (var i=1; i < 15; i++)
+					   {
+						   $("#showId" + i).show();
+					   }
+
+					   $("#inEarIdS").show();
+					   $("#inEarIdS").html(data);
+				   })
+		}
+		else
+		{
+			$.post("users!getInearId?userCateId=" + varId, function(data) {
+
+
+					   for (var i=1; i < 15; i++)
+					   {
+						   $("#showId" + i).hide();
+					   }
+					   $("#showOtherId").hide();
+					   $("#subId").hide();
+
+					   $("#inEarIdS").show();
+					   $("#inEarIdS").html(data);
+				   })
+		}
+	}
+}
+
+function writeContet(varStr) {
+	varStr = varStr.trim();
+	if (varStr != "")
+	{
+		$.post("users!getInearIdWrite?varStr=" + encodeURI(varStr), function(data) {
+				   $("#onkeyDownContentID").html(data);
+			   })
+	}
+}
+
+function changeTextValue(varStr) {
+	$("#onkeyDownContentID").show();
+	$("#onkeyDownContentIDShow").show();
+	for (var i=1; i < 15; i++)
+	{
+		$("#showId" + i).hide();
+	}
+	$("#showOtherId").hide();
+	$("#subId").hide();
+}
+
+function focusValue(varId, varStr) {
+	$("#showNameId").attr("value", varStr);
+	$("#categoryId").attr("value", varId);
+
+	$("#onkeyDownContentIDShow").hide();
+	$("#onkeyDownContentID").hide();
+
+	$("#showOtherId").show();
+	$("#subId").show();
+	for (var i=1; i < 15; i++)
+	{
+		$("#showId" + i).show();
+	}
+}
+
+function checkSjh(phoneNum) {
+	//if(!(/^1[3|5][0-9]\d{4,8}$/.test(phoneNum))){
+	if (!(/^1[3|4|5|7|8][0-9]\d{8}$/.test(phoneNum)))
+	{
+		alert("不是完整的11位手机号"); //或者正确的手机号前七位
+		//document.mobileform.mobile.focus();
+		$("#phoneId").focus();
+		return false; 
+	} 
+}
+function is_mobile() {
+
+    var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+	var u = navigator.userAgent;
+	if (null == u)
+	{
+		$("#apporpc").attr("value", "1");
+		return true;
+	}
+	var result = regex_match.exec(u);
+
+	if (null == result)
+	{
+		return false;
+	}
+	else
+	{
+		$("#apporpc").attr("value", "1");
+		return true;
+	}
+}
+
+
+function findxy(a) {
+	if ($(a).val() != 0)
+	{
+		$.post("pr001ks!registerApply1", {
+				   "goclass.id":$(a).val()
+			   }, function(data) {
+		           $('#yxobjid').html(data);
+		       }); 
+	}
+}
+
+
+function showGrade(a) {//显示年级
+	if ($(a).val() != 0)
+	{
+		$.post("loginks!showGrade", {
+				   "upId":$(a).val()
+			   }, function(data) {
+		           $('#gradeId').html(data);
+		       }); 
+	}
+}
+
+function showClass(a) {//显示班级
+	if ($(a).val() != 0)
+	{
+		$.post("loginks!showClass", {
+				   "upId":$(a).val()
+			   }, function(data) {
+		           $('#classId').html(data);
+		       }); 
+	}
+}
+
+
+
+</script>
+
+
+
+
+  </head>
+
+  <body>
+
+
+
+
+
+		<tr style="display:none;">
+		  <td colspan="2">
+			<input type="hidden" name="userflag" value="0" id="userflag"/>  </td>
+		</tr>
+
+
+
+		<div class="headerbox">
+		  <div class="wrapper clearfix">
+			<div class="logo"><a href="javascript:void(0);"><img src="images/logo.png"></a></div>
+			<ul class="navlist clearfix" id="mbulid">
+			  <li><a href="pr001ks!listPapers" title="首页" class="menu">首页</a></li>
+
+
+
+			  <li><a href="loginks!loginApply" title="个人中心" class="menu">个人中心</a></li>  
+
+
+			</ul>
+			<b class="top_nav"></b>
+			<ul class="m-mobile-nav">
+			  <li><span class="tit"><a href="pr001ks!listPapers">首页</a></span></li>
+
+			  <li><span class="tit"><a href="javascript:void(0);">个人中心</a></span></li>
+
+			</ul>
+			<form action="" method="get" class="search clearfix"><input name="" type="text" class="input-box" placeholder="请输入搜索关键字"><input name="" type="button" class="button"></form>
+			<div class="search_btn"><a href="javascript:void(0)"><img src="images/search_btn.jpg"></a></div>
+			<div class="user_btn">
+
+
+
+
+			  <a href="loginks!zhucePage?type=0">登录</a>
+
+
+
+
+			</div>
+		  </div>
+		</div>
+
+	<div class="wrapper white_bj">
+	  <div class="user_box">
+    	<div class="u_img"></div>
+        <h1>用户注册</h1>
+        <form name="form1" id="form1" method="post" action="loginks!registration">
+		  <tr style="display:none;">
+			<td colspan="2">
+			  <input type="hidden" name="apporpc" value="0" id="apporpc"/>  </td>
+		  </tr>
+
+		  <ul class="reg_list">
+
+			<table width="80%" border="0">
+			  <tr height="40px">
+				<td align="left">
+				  <label style="font-size: 16px">&nbsp;省份列表：</label>
+				</td>
+				<td align="left">
+				  <input type="text" id="pcname" onclick="show_tree(this)"
+					style="width: 200px; background-image: url('image/bar/select.jpg'); cursor: default;"
+					readonly="readonly" value="">
+				  <input type="hidden" name="pcid" id="pcid"	value="">
+				  <input type="hidden" name="pcidTwo" id="pcidTwo">
+
+				  <!-- 弹出层 -->
+				  <div id="divPop"
+					style="background-color: #ffffff; border: solid 1px #004B97; position: absolute; display: none; width: 200px; height: 200px; text-align: left; overflow: auto;">
+<SCRIPT type="text/javascript" LANGUAGE="JavaScript">
+var data={};
+data['-1_0'] = 'text:地球小博士考试系统;url:javascript:void(0)';
+data['0_1'] = 'text:无;url:javascript:category1(1,"无")';
+data['0_100'] = 'text:安徽;url:javascript:category1(100,"安徽")';
+data['100_101'] = 'text:合肥;url:javascript:category1(101,"合肥")';
+data['100_102'] = 'text:安庆;url:javascript:category1(102,"安庆")';
+data['100_103'] = 'text:毫州;url:javascript:category1(103,"毫州")';
+data['100_104'] = 'text:蚌埠;url:javascript:category1(104,"蚌埠")';
+data['100_105'] = 'text:滁州;url:javascript:category1(105,"滁州")';
+data['100_106'] = 'text:巢湖;url:javascript:category1(106,"巢湖")';
+data['100_107'] = 'text:池州;url:javascript:category1(107,"池州")';
+data['100_108'] = 'text:阜阳;url:javascript:category1(108,"阜阳")';
+data['100_109'] = 'text:淮北;url:javascript:category1(109,"淮北")';
+data['100_110'] = 'text:淮南;url:javascript:category1(110,"淮南")';
+data['100_111'] = 'text:黄山;url:javascript:category1(111,"黄山")';
+data['100_112'] = 'text:六安;url:javascript:category1(112,"六安")';
+data['100_113'] = 'text:马鞍山;url:javascript:category1(113,"马鞍山")';
+data['100_114'] = 'text:宿州;url:javascript:category1(114,"宿州")';
+data['100_115'] = 'text:铜陵;url:javascript:category1(115,"铜陵")';
+data['100_116'] = 'text:芜湖;url:javascript:category1(116,"芜湖")';
+data['100_117'] = 'text:宣城;url:javascript:category1(117,"宣城")';
+data['0_200'] = 'text:澳门;url:javascript:category1(200,"澳门")';
+data['0_300'] = 'text:北京;url:javascript:category1(300,"北京")';
+data['0_400'] = 'text:重庆;url:javascript:category1(400,"重庆")';
+data['0_500'] = 'text:福建;url:javascript:category1(500,"福建")';
+data['500_501'] = 'text:福州;url:javascript:category1(501,"福州")';
+data['500_502'] = 'text:龙岩;url:javascript:category1(502,"龙岩")';
+data['500_503'] = 'text:南平;url:javascript:category1(503,"南平")';
+data['500_504'] = 'text:宁德;url:javascript:category1(504,"宁德")';
+data['500_505'] = 'text:莆田;url:javascript:category1(505,"莆田")';
+data['500_506'] = 'text:泉州;url:javascript:category1(506,"泉州")';
+data['500_507'] = 'text:三明;url:javascript:category1(507,"三明")';
+data['500_508'] = 'text:厦门;url:javascript:category1(508,"厦门")';
+data['500_509'] = 'text:漳州;url:javascript:category1(509,"漳州")';
+data['0_600'] = 'text:甘肃;url:javascript:category1(600,"甘肃")';
+data['600_601'] = 'text:兰州;url:javascript:category1(601,"兰州")';
+data['600_602'] = 'text:白银;url:javascript:category1(602,"白银")';
+data['600_603'] = 'text:定西;url:javascript:category1(603,"定西")';
+data['600_604'] = 'text:合作;url:javascript:category1(604,"合作")';
+data['600_605'] = 'text:金昌;url:javascript:category1(605,"金昌")';
+data['600_606'] = 'text:酒泉;url:javascript:category1(606,"酒泉")';
+data['600_607'] = 'text:嘉峪关;url:javascript:category1(607,"嘉峪关")';
+data['600_608'] = 'text:临夏;url:javascript:category1(608,"临夏")';
+data['600_609'] = 'text:平凉;url:javascript:category1(609,"平凉")';
+data['600_610'] = 'text:庆阳;url:javascript:category1(610,"庆阳")';
+data['600_611'] = 'text:天水;url:javascript:category1(611,"天水")';
+data['600_612'] = 'text:武威;url:javascript:category1(612,"武威")';
+data['600_613'] = 'text:武都;url:javascript:category1(613,"武都")';
+data['600_614'] = 'text:张掖;url:javascript:category1(614,"张掖")';
+data['0_700'] = 'text:广东;url:javascript:category1(700,"广东")';
+data['700_701'] = 'text:广州;url:javascript:category1(701,"广州")';
+data['700_702'] = 'text:潮州;url:javascript:category1(702,"潮州")';
+data['700_703'] = 'text:东莞;url:javascript:category1(703,"东莞")';
+data['700_704'] = 'text:佛山;url:javascript:category1(704,"佛山")';
+data['700_705'] = 'text:河源;url:javascript:category1(705,"河源")';
+data['700_706'] = 'text:惠州;url:javascript:category1(706,"惠州")';
+data['700_707'] = 'text:江门;url:javascript:category1(707,"江门")';
+data['700_708'] = 'text:揭阳;url:javascript:category1(708,"揭阳")';
+data['700_709'] = 'text:梅州;url:javascript:category1(709,"梅州")';
+data['700_710'] = 'text:茂名;url:javascript:category1(710,"茂名")';
+data['700_711'] = 'text:清远;url:javascript:category1(711,"清远")';
+data['700_712'] = 'text:深圳;url:javascript:category1(712,"深圳")';
+data['700_713'] = 'text:汕头;url:javascript:category1(713,"汕头")';
+data['700_714'] = 'text:韶关;url:javascript:category1(714,"韶关")';
+data['700_715'] = 'text:汕尾;url:javascript:category1(715,"汕尾")';
+data['700_716'] = 'text:阳江;url:javascript:category1(716,"阳江")';
+data['700_717'] = 'text:云浮;url:javascript:category1(717,"云浮")';
+data['700_718'] = 'text:珠海;url:javascript:category1(718,"珠海")';
+data['700_719'] = 'text:中山;url:javascript:category1(719,"中山")';
+data['700_720'] = 'text:湛江;url:javascript:category1(720,"湛江")';
+data['700_721'] = 'text:肇庆;url:javascript:category1(721,"肇庆")';
+data['0_800'] = 'text:广西;url:javascript:category1(800,"广西")';
+data['800_801'] = 'text:南宁;url:javascript:category1(801,"南宁")';
+data['800_802'] = 'text:北海;url:javascript:category1(802,"北海")';
+data['800_803'] = 'text:白色;url:javascript:category1(803,"白色")';
+data['800_804'] = 'text:崇左;url:javascript:category1(804,"崇左")';
+data['800_805'] = 'text:防城港;url:javascript:category1(805,"防城港")';
+data['800_806'] = 'text:桂林;url:javascript:category1(806,"桂林")';
+data['800_807'] = 'text:贵港;url:javascript:category1(807,"贵港")';
+data['800_808'] = 'text:贺州;url:javascript:category1(808,"贺州")';
+data['800_809'] = 'text:河池;url:javascript:category1(809,"河池")';
+data['800_810'] = 'text:柳州;url:javascript:category1(810,"柳州")';
+data['800_811'] = 'text:来宾;url:javascript:category1(811,"来宾")';
+data['800_812'] = 'text:钦州;url:javascript:category1(812,"钦州")';
+data['800_813'] = 'text:梧州;url:javascript:category1(813,"梧州")';
+data['800_814'] = 'text:玉林;url:javascript:category1(814,"玉林")';
+data['0_900'] = 'text:贵州;url:javascript:category1(900,"贵州")';
+data['900_901'] = 'text:贵阳;url:javascript:category1(901,"贵阳")';
+data['900_902'] = 'text:安顺;url:javascript:category1(902,"安顺")';
+data['900_903'] = 'text:毕节;url:javascript:category1(903,"毕节")';
+data['900_904'] = 'text:都匀;url:javascript:category1(904,"都匀")';
+data['900_905'] = 'text:凯里;url:javascript:category1(905,"凯里")';
+data['900_906'] = 'text:六盘水;url:javascript:category1(906,"六盘水")';
+data['900_907'] = 'text:晴隆;url:javascript:category1(907,"晴隆")';
+data['900_908'] = 'text:铜仁;url:javascript:category1(908,"铜仁")';
+data['900_909'] = 'text:兴义;url:javascript:category1(909,"兴义")';
+data['900_910'] = 'text:遵义;url:javascript:category1(910,"遵义")';
+data['0_1000'] = 'text:海南;url:javascript:category1(1000,"海南")';
+data['1000_1001'] = 'text:海口;url:javascript:category1(1001,"海口")';
+data['1000_1002'] = 'text:白沙;url:javascript:category1(1002,"白沙")';
+data['1000_1003'] = 'text:保亭;url:javascript:category1(1003,"保亭")';
+data['1000_1004'] = 'text:澄迈;url:javascript:category1(1004,"澄迈")';
+data['1000_1005'] = 'text:昌江;url:javascript:category1(1005,"昌江")';
+data['1000_1006'] = 'text:儋州;url:javascript:category1(1006,"儋州")';
+data['1000_1007'] = 'text:定安;url:javascript:category1(1007,"定安")';
+data['1000_1008'] = 'text:东方;url:javascript:category1(1008,"东方")';
+data['1000_1009'] = 'text:临高;url:javascript:category1(1009,"临高")';
+data['1000_1010'] = 'text:陵水;url:javascript:category1(1010,"陵水")';
+data['1000_1011'] = 'text:乐东;url:javascript:category1(1011,"乐东")';
+data['1000_1012'] = 'text:南沙岛;url:javascript:category1(1012,"南沙岛")';
+data['1000_1013'] = 'text:琼海;url:javascript:category1(1013,"琼海")';
+data['1000_1014'] = 'text:琼中;url:javascript:category1(1014,"琼中")';
+data['1000_1015'] = 'text:三亚;url:javascript:category1(1015,"三亚")';
+data['1000_1016'] = 'text:屯昌;url:javascript:category1(1016,"屯昌")';
+data['1000_1017'] = 'text:五指山;url:javascript:category1(1017,"五指山")';
+data['1000_1018'] = 'text:文昌;url:javascript:category1(1018,"文昌")';
+data['1000_1019'] = 'text:万宁;url:javascript:category1(1019,"万宁")';
+data['1000_1020'] = 'text:西沙;url:javascript:category1(1020,"西沙")';
+data['0_1100'] = 'text:河北;url:javascript:category1(1100,"河北")';
+data['1100_1101'] = 'text:石家庄;url:javascript:category1(1101,"石家庄")';
+data['1100_1102'] = 'text:保定;url:javascript:category1(1102,"保定")';
+data['1100_1103'] = 'text:承德;url:javascript:category1(1103,"承德")';
+data['1100_1104'] = 'text:沧州;url:javascript:category1(1104,"沧州")';
+data['1100_1105'] = 'text:衡水;url:javascript:category1(1105,"衡水")';
+data['1100_1106'] = 'text:邯郸;url:javascript:category1(1106,"邯郸")';
+data['1100_1107'] = 'text:廊坊;url:javascript:category1(1107,"廊坊")';
+data['1100_1108'] = 'text:秦皇岛;url:javascript:category1(1108,"秦皇岛")';
+data['1100_1109'] = 'text:唐山;url:javascript:category1(1109,"唐山")';
+data['1100_1110'] = 'text:邢台;url:javascript:category1(1110,"邢台")';
+data['1100_1111'] = 'text:张家口;url:javascript:category1(1111,"张家口")';
+data['0_1200'] = 'text:河南;url:javascript:category1(1200,"河南")';
+data['1200_1201'] = 'text:郑州;url:javascript:category1(1201,"郑州")';
+data['1200_1202'] = 'text:安阳;url:javascript:category1(1202,"安阳")';
+data['1200_1203'] = 'text:鹤壁;url:javascript:category1(1203,"鹤壁")';
+data['1200_1204'] = 'text:焦作;url:javascript:category1(1204,"焦作")';
+data['1200_1205'] = 'text:济源;url:javascript:category1(1205,"济源")';
+data['1200_1206'] = 'text:开封;url:javascript:category1(1206,"开封")';
+data['1200_1207'] = 'text:洛阳;url:javascript:category1(1207,"洛阳")';
+data['1200_1208'] = 'text:漯河;url:javascript:category1(1208,"漯河")';
+data['1200_1209'] = 'text:南阳;url:javascript:category1(1209,"南阳")';
+data['1200_1210'] = 'text:濮阳;url:javascript:category1(1210,"濮阳")';
+data['1200_1211'] = 'text:平顶山;url:javascript:category1(1211,"平顶山")';
+data['1200_1212'] = 'text:三门峡;url:javascript:category1(1212,"三门峡")';
+data['1200_1213'] = 'text:商丘;url:javascript:category1(1213,"商丘")';
+data['1200_1214'] = 'text:新乡;url:javascript:category1(1214,"新乡")';
+data['1200_1215'] = 'text:许昌;url:javascript:category1(1215,"许昌")';
+data['1200_1216'] = 'text:信阳;url:javascript:category1(1216,"信阳")';
+data['1200_1217'] = 'text:周口;url:javascript:category1(1217,"周口")';
+data['1200_1218'] = 'text:驻马店;url:javascript:category1(1218,"驻马店")';
+data['0_1300'] = 'text:黑龙江;url:javascript:category1(1300,"黑龙江")';
+data['1300_1301'] = 'text:哈尔滨;url:javascript:category1(1301,"哈尔滨")';
+data['1300_1302'] = 'text:大庆;url:javascript:category1(1302,"大庆")';
+data['1300_1303'] = 'text:大兴安岭;url:javascript:category1(1303,"大兴安岭")';
+data['1300_1304'] = 'text:鹤岗;url:javascript:category1(1304,"鹤岗")';
+data['1300_1305'] = 'text:黑河;url:javascript:category1(1305,"黑河")';
+data['1300_1306'] = 'text:佳木斯;url:javascript:category1(1306,"佳木斯")';
+data['1300_1307'] = 'text:鸡西;url:javascript:category1(1307,"鸡西")';
+data['1300_1308'] = 'text:牡丹江;url:javascript:category1(1308,"牡丹江")';
+data['1300_1309'] = 'text:齐齐哈尔;url:javascript:category1(1309,"齐齐哈尔")';
+data['1300_1310'] = 'text:七台河;url:javascript:category1(1310,"七台河")';
+data['1300_1311'] = 'text:双鸭山;url:javascript:category1(1311,"双鸭山")';
+data['1300_1312'] = 'text:绥化;url:javascript:category1(1312,"绥化")';
+data['1300_1313'] = 'text:伊春;url:javascript:category1(1313,"伊春")';
+data['0_1400'] = 'text:湖北;url:javascript:category1(1400,"湖北")';
+data['1400_1401'] = 'text:武汉;url:javascript:category1(1401,"武汉")';
+data['1400_1402'] = 'text:鄂州;url:javascript:category1(1402,"鄂州")';
+data['1400_1403'] = 'text:恩施;url:javascript:category1(1403,"恩施")';
+data['1400_1404'] = 'text:黄石;url:javascript:category1(1404,"黄石")';
+data['1400_1405'] = 'text:黄冈;url:javascript:category1(1405,"黄冈")';
+data['1400_1406'] = 'text:荆州;url:javascript:category1(1406,"荆州")';
+data['1400_1407'] = 'text:荆门;url:javascript:category1(1407,"荆门")';
+data['1400_1408'] = 'text:潜江;url:javascript:category1(1408,"潜江")';
+data['1400_1409'] = 'text:十堰;url:javascript:category1(1409,"十堰")';
+data['1400_1410'] = 'text:随州;url:javascript:category1(1410,"随州")';
+data['1400_1411'] = 'text:神农架;url:javascript:category1(1411,"神农架")';
+data['1400_1412'] = 'text:天门;url:javascript:category1(1412,"天门")';
+data['1400_1413'] = 'text:襄阳;url:javascript:category1(1413,"襄阳")';
+data['1400_1414'] = 'text:孝感;url:javascript:category1(1414,"孝感")';
+data['1400_1415'] = 'text:咸宁;url:javascript:category1(1415,"咸宁")';
+data['1400_1416'] = 'text:仙桃;url:javascript:category1(1416,"仙桃")';
+data['1400_1417'] = 'text:宜昌;url:javascript:category1(1417,"宜昌")';
+data['0_1500'] = 'text:湖南;url:javascript:category1(1500,"湖南")';
+data['1500_1501'] = 'text:长沙;url:javascript:category1(1501,"长沙")';
+data['1500_1502'] = 'text:常德;url:javascript:category1(1502,"常德")';
+data['1500_1503'] = 'text:郴州;url:javascript:category1(1503,"郴州")';
+data['1500_1504'] = 'text:衡阳;url:javascript:category1(1504,"衡阳")';
+data['1500_1505'] = 'text:怀化;url:javascript:category1(1505,"怀化")';
+data['1500_1506'] = 'text:吉首;url:javascript:category1(1506,"吉首")';
+data['1500_1507'] = 'text:娄底;url:javascript:category1(1507,"娄底")';
+data['1500_1508'] = 'text:黔阳;url:javascript:category1(1508,"黔阳")';
+data['1500_1509'] = 'text:邵阳;url:javascript:category1(1509,"邵阳")';
+data['1500_1510'] = 'text:湘潭;url:javascript:category1(1510,"湘潭")';
+data['1500_1511'] = 'text:岳阳;url:javascript:category1(1511,"岳阳")';
+data['1500_1512'] = 'text:益阳;url:javascript:category1(1512,"益阳")';
+data['1500_1513'] = 'text:永州;url:javascript:category1(1513,"永州")';
+data['1500_1514'] = 'text:株洲;url:javascript:category1(1514,"株洲")';
+data['1500_1515'] = 'text:张家界;url:javascript:category1(1515,"张家界")';
+data['0_1600'] = 'text:吉林;url:javascript:category1(1600,"吉林")';
+data['1600_1601'] = 'text:长春;url:javascript:category1(1601,"长春")';
+data['1600_1602'] = 'text:白山;url:javascript:category1(1602,"白山")';
+data['1600_1603'] = 'text:白城;url:javascript:category1(1603,"白城")';
+data['1600_1604'] = 'text:吉林;url:javascript:category1(1604,"吉林")';
+data['1600_1605'] = 'text:辽源;url:javascript:category1(1605,"辽源")';
+data['1600_1606'] = 'text:四平;url:javascript:category1(1606,"四平")';
+data['1600_1607'] = 'text:松原;url:javascript:category1(1607,"松原")';
+data['1600_1608'] = 'text:通化;url:javascript:category1(1608,"通化")';
+data['1600_1609'] = 'text:延吉;url:javascript:category1(1609,"延吉")';
+data['0_1700'] = 'text:江苏;url:javascript:category1(1700,"江苏")';
+data['1700_1701'] = 'text:南京;url:javascript:category1(1701,"南京")';
+data['1700_1702'] = 'text:常州;url:javascript:category1(1702,"常州")';
+data['1700_1703'] = 'text:淮安;url:javascript:category1(1703,"淮安")';
+data['1700_1704'] = 'text:连云港;url:javascript:category1(1704,"连云港")';
+data['1700_1705'] = 'text:南通;url:javascript:category1(1705,"南通")';
+data['1700_1706'] = 'text:苏州;url:javascript:category1(1706,"苏州")';
+data['1700_1707'] = 'text:宿迁;url:javascript:category1(1707,"宿迁")';
+data['1700_1708'] = 'text:泰州;url:javascript:category1(1708,"泰州")';
+data['1700_1709'] = 'text:无锡;url:javascript:category1(1709,"无锡")';
+data['1700_1710'] = 'text:徐州;url:javascript:category1(1710,"徐州")';
+data['1700_1711'] = 'text:盐城;url:javascript:category1(1711,"盐城")';
+data['1700_1712'] = 'text:扬州;url:javascript:category1(1712,"扬州")';
+data['1700_1713'] = 'text:镇江;url:javascript:category1(1713,"镇江")';
+data['0_1800'] = 'text:江西;url:javascript:category1(1800,"江西")';
+data['1800_1801'] = 'text:南昌;url:javascript:category1(1801,"南昌")';
+data['1800_1802'] = 'text:抚州;url:javascript:category1(1802,"抚州")';
+data['1800_1803'] = 'text:赣州;url:javascript:category1(1803,"赣州")';
+data['1800_1804'] = 'text:九江;url:javascript:category1(1804,"九江")';
+data['1800_1805'] = 'text:景德镇;url:javascript:category1(1805,"景德镇")';
+data['1800_1806'] = 'text:吉安;url:javascript:category1(1806,"吉安")';
+data['1800_1807'] = 'text:萍乡;url:javascript:category1(1807,"萍乡")';
+data['1800_1808'] = 'text:上饶;url:javascript:category1(1808,"上饶")';
+data['1800_1809'] = 'text:新余;url:javascript:category1(1809,"新余")';
+data['1800_1810'] = 'text:鹰潭;url:javascript:category1(1810,"鹰潭")';
+data['1800_1811'] = 'text:宜春;url:javascript:category1(1811,"宜春")';
+data['0_1900'] = 'text:辽宁;url:javascript:category1(1900,"辽宁")';
+data['1900_1901'] = 'text:沈阳;url:javascript:category1(1901,"沈阳")';
+data['1900_1902'] = 'text:鞍山;url:javascript:category1(1902,"鞍山")';
+data['1900_1903'] = 'text:本溪;url:javascript:category1(1903,"本溪")';
+data['1900_1904'] = 'text:朝阳;url:javascript:category1(1904,"朝阳")';
+data['1900_1905'] = 'text:大连;url:javascript:category1(1905,"大连")';
+data['1900_1906'] = 'text:丹东;url:javascript:category1(1906,"丹东")';
+data['1900_1907'] = 'text:抚顺;url:javascript:category1(1907,"抚顺")';
+data['1900_1908'] = 'text:阜新;url:javascript:category1(1908,"阜新")';
+data['1900_1909'] = 'text:葫芦岛;url:javascript:category1(1909,"葫芦岛")';
+data['1900_1910'] = 'text:锦州;url:javascript:category1(1910,"锦州")';
+data['1900_1911'] = 'text:辽阳;url:javascript:category1(1911,"辽阳")';
+data['1900_1912'] = 'text:盘锦;url:javascript:category1(1912,"盘锦")';
+data['1900_1913'] = 'text:铁岭;url:javascript:category1(1913,"铁岭")';
+data['1900_1914'] = 'text:营口;url:javascript:category1(1914,"营口")';
+data['0_2000'] = 'text:内蒙古;url:javascript:category1(2000,"内蒙古")';
+data['2000_2001'] = 'text:呼和浩特;url:javascript:category1(2001,"呼和浩特")';
+data['2000_2002'] = 'text:阿拉善左旗;url:javascript:category1(2002,"阿拉善左旗")';
+data['2000_2003'] = 'text:包头;url:javascript:category1(2003,"包头")';
+data['2000_2004'] = 'text:赤峰;url:javascript:category1(2004,"赤峰")';
+data['2000_2005'] = 'text:鄂尔多斯;url:javascript:category1(2005,"鄂尔多斯")';
+data['2000_2006'] = 'text:呼伦贝尔;url:javascript:category1(2006,"呼伦贝尔")';
+data['2000_2007'] = 'text:集宁;url:javascript:category1(2007,"集宁")';
+data['2000_2008'] = 'text:临河;url:javascript:category1(2008,"临河")';
+data['2000_2009'] = 'text:通辽;url:javascript:category1(2009,"通辽")';
+data['2000_2010'] = 'text:乌兰浩特;url:javascript:category1(2010,"乌兰浩特")';
+data['2000_2011'] = 'text:乌海;url:javascript:category1(2011,"乌海")';
+data['2000_2012'] = 'text:锡林浩特;url:javascript:category1(2012,"锡林浩特")';
+data['0_2100'] = 'text:宁夏;url:javascript:category1(2100,"宁夏")';
+data['2100_2101'] = 'text:银川;url:javascript:category1(2101,"银川")';
+data['2100_2102'] = 'text:固原;url:javascript:category1(2102,"固原")';
+data['2100_2103'] = 'text:石嘴山;url:javascript:category1(2103,"石嘴山")';
+data['2100_2104'] = 'text:吴忠;url:javascript:category1(2104,"吴忠")';
+data['2100_2105'] = 'text:中卫;url:javascript:category1(2105,"中卫")';
+data['0_2200'] = 'text:青海;url:javascript:category1(2200,"青海")';
+data['2200_2201'] = 'text:西宁;url:javascript:category1(2201,"西宁")';
+data['2200_2202'] = 'text:果洛;url:javascript:category1(2202,"果洛")';
+data['2200_2203'] = 'text:海东;url:javascript:category1(2203,"海东")';
+data['2200_2204'] = 'text:海南;url:javascript:category1(2204,"海南")';
+data['2200_2205'] = 'text:海北;url:javascript:category1(2205,"海北")';
+data['2200_2206'] = 'text:海西;url:javascript:category1(2206,"海西")';
+data['2200_2207'] = 'text:黄南;url:javascript:category1(2207,"黄南")';
+data['2200_2208'] = 'text:玉树;url:javascript:category1(2208,"玉树")';
+data['0_2300'] = 'text:山东;url:javascript:category1(2300,"山东")';
+data['2300_2301'] = 'text:济南;url:javascript:category1(2301,"济南")';
+data['2300_2302'] = 'text:滨州;url:javascript:category1(2302,"滨州")';
+data['2300_2303'] = 'text:东营;url:javascript:category1(2303,"东营")';
+data['2300_2304'] = 'text:德州;url:javascript:category1(2304,"德州")';
+data['2300_2305'] = 'text:菏泽;url:javascript:category1(2305,"菏泽")';
+data['2300_2306'] = 'text:济宁;url:javascript:category1(2306,"济宁")';
+data['2300_2307'] = 'text:莱芜;url:javascript:category1(2307,"莱芜")';
+data['2300_2308'] = 'text:临沂;url:javascript:category1(2308,"临沂")';
+data['2300_2309'] = 'text:聊城;url:javascript:category1(2309,"聊城")';
+data['2300_2310'] = 'text:青岛;url:javascript:category1(2310,"青岛")';
+data['2300_2311'] = 'text:日照;url:javascript:category1(2311,"日照")';
+data['2300_2312'] = 'text:泰安;url:javascript:category1(2312,"泰安")';
+data['2300_2313'] = 'text:潍坊;url:javascript:category1(2313,"潍坊")';
+data['2300_2314'] = 'text:威海;url:javascript:category1(2314,"威海")';
+data['2300_2315'] = 'text:烟台;url:javascript:category1(2315,"烟台")';
+data['2300_2316'] = 'text:淄博;url:javascript:category1(2316,"淄博")';
+data['2300_2317'] = 'text:枣庄;url:javascript:category1(2317,"枣庄")';
+data['0_2400'] = 'text:山西;url:javascript:category1(2400,"山西")';
+data['2400_2401'] = 'text:太原;url:javascript:category1(2401,"太原")';
+data['2400_2402'] = 'text:长治;url:javascript:category1(2402,"长治")';
+data['2400_2403'] = 'text:大同;url:javascript:category1(2403,"大同")';
+data['2400_2404'] = 'text:晋城;url:javascript:category1(2404,"晋城")';
+data['2400_2405'] = 'text:晋中;url:javascript:category1(2405,"晋中")';
+data['2400_2406'] = 'text:临汾;url:javascript:category1(2406,"临汾")';
+data['2400_2407'] = 'text:吕梁;url:javascript:category1(2407,"吕梁")';
+data['2400_2408'] = 'text:朔州;url:javascript:category1(2408,"朔州")';
+data['2400_2409'] = 'text:忻州;url:javascript:category1(2409,"忻州")';
+data['2400_2410'] = 'text:阳泉;url:javascript:category1(2410,"阳泉")';
+data['2400_2411'] = 'text:运城;url:javascript:category1(2411,"运城")';
+data['0_2500'] = 'text:陕西;url:javascript:category1(2500,"陕西")';
+data['2500_2501'] = 'text:西安;url:javascript:category1(2501,"西安")';
+data['2500_2502'] = 'text:宝康;url:javascript:category1(2502,"宝康")';
+data['2500_2503'] = 'text:宝鸡;url:javascript:category1(2503,"宝鸡")';
+data['2500_2504'] = 'text:陈仓;url:javascript:category1(2504,"陈仓")';
+data['2500_2505'] = 'text:汉中;url:javascript:category1(2505,"汉中")';
+data['2500_2506'] = 'text:商洛;url:javascript:category1(2506,"商洛")';
+data['2500_2507'] = 'text:铜川;url:javascript:category1(2507,"铜川")';
+data['2500_2508'] = 'text:渭南;url:javascript:category1(2508,"渭南")';
+data['2500_2509'] = 'text:咸阳;url:javascript:category1(2509,"咸阳")';
+data['2500_2510'] = 'text:延安;url:javascript:category1(2510,"延安")';
+data['2500_2511'] = 'text:榆林;url:javascript:category1(2511,"榆林")';
+data['0_2600'] = 'text:上海;url:javascript:category1(2600,"上海")';
+data['0_2700'] = 'text:四川;url:javascript:category1(2700,"四川")';
+data['2700_2701'] = 'text:成都;url:javascript:category1(2701,"成都")';
+data['2700_2702'] = 'text:阿贝;url:javascript:category1(2702,"阿贝")';
+data['2700_2703'] = 'text:巴中;url:javascript:category1(2703,"巴中")';
+data['2700_2704'] = 'text:德阳;url:javascript:category1(2704,"德阳")';
+data['2700_2705'] = 'text:达州;url:javascript:category1(2705,"达州")';
+data['2700_2706'] = 'text:广元;url:javascript:category1(2706,"广元")';
+data['2700_2707'] = 'text:广安;url:javascript:category1(2707,"广安")';
+data['2700_2708'] = 'text:甘孜;url:javascript:category1(2708,"甘孜")';
+data['2700_2709'] = 'text:泸州;url:javascript:category1(2709,"泸州")';
+data['2700_2710'] = 'text:乐山;url:javascript:category1(2710,"乐山")';
+data['2700_2711'] = 'text:凉山;url:javascript:category1(2711,"凉山")';
+data['2700_2712'] = 'text:绵阳;url:javascript:category1(2712,"绵阳")';
+data['2700_2713'] = 'text:眉山;url:javascript:category1(2713,"眉山")';
+data['2700_2714'] = 'text:内江;url:javascript:category1(2714,"内江")';
+data['2700_2715'] = 'text:南充;url:javascript:category1(2715,"南充")';
+data['2700_2716'] = 'text:攀枝花;url:javascript:category1(2716,"攀枝花")';
+data['2700_2717'] = 'text:遂宁;url:javascript:category1(2717,"遂宁")';
+data['2700_2718'] = 'text:宜宾;url:javascript:category1(2718,"宜宾")';
+data['2700_2719'] = 'text:雅安;url:javascript:category1(2719,"雅安")';
+data['2700_2720'] = 'text:自贡;url:javascript:category1(2720,"自贡")';
+data['2700_2721'] = 'text:资阳;url:javascript:category1(2721,"资阳")';
+data['0_2800'] = 'text:天津;url:javascript:category1(2800,"天津")';
+data['0_2900'] = 'text:台湾;url:javascript:category1(2900,"台湾")';
+data['0_3000'] = 'text:西藏;url:javascript:category1(3000,"西藏")';
+data['3000_3001'] = 'text:拉萨;url:javascript:category1(3001,"拉萨")';
+data['3000_3002'] = 'text:阿里;url:javascript:category1(3002,"阿里")';
+data['3000_3003'] = 'text:昌都;url:javascript:category1(3003,"昌都")';
+data['3000_3004'] = 'text:林芝;url:javascript:category1(3004,"林芝")';
+data['3000_3005'] = 'text:那曲;url:javascript:category1(3005,"那曲")';
+data['3000_3006'] = 'text:日喀则;url:javascript:category1(3006,"日喀则")';
+data['3000_3007'] = 'text:山南;url:javascript:category1(3007,"山南")';
+data['0_3100'] = 'text:香港;url:javascript:category1(3100,"香港")';
+data['0_3200'] = 'text:新疆;url:javascript:category1(3200,"新疆")';
+data['3200_3201'] = 'text:乌鲁木齐;url:javascript:category1(3201,"乌鲁木齐")';
+data['3200_3202'] = 'text:阿克苏;url:javascript:category1(3202,"阿克苏")';
+data['3200_3203'] = 'text:阿图什;url:javascript:category1(3203,"阿图什")';
+data['3200_3204'] = 'text:阿勒泰;url:javascript:category1(3204,"阿勒泰")';
+data['3200_3205'] = 'text:阿拉尔;url:javascript:category1(3205,"阿拉尔")';
+data['3200_3206'] = 'text:博乐;url:javascript:category1(3206,"博乐")';
+data['3200_3207'] = 'text:昌吉;url:javascript:category1(3207,"昌吉")';
+data['3200_3208'] = 'text:哈密;url:javascript:category1(3208,"哈密")';
+data['3200_3209'] = 'text:和田;url:javascript:category1(3209,"和田")';
+data['3200_3210'] = 'text:克拉玛依;url:javascript:category1(3210,"克拉玛依")';
+data['3200_3211'] = 'text:喀什;url:javascript:category1(3211,"喀什")';
+data['3200_3212'] = 'text:库尔勒;url:javascript:category1(3212,"库尔勒")';
+data['3200_3213'] = 'text:石河子;url:javascript:category1(3213,"石河子")';
+data['3200_3214'] = 'text:吐鲁番;url:javascript:category1(3214,"吐鲁番")';
+data['3200_3215'] = 'text:塔城;url:javascript:category1(3215,"塔城")';
+data['3200_3216'] = 'text:伊宁;url:javascript:category1(3216,"伊宁")';
+data['0_3300'] = 'text:云南;url:javascript:category1(3300,"云南")';
+data['3300_3301'] = 'text:昆明;url:javascript:category1(3301,"昆明")';
+data['3300_3302'] = 'text:保山;url:javascript:category1(3302,"保山")';
+data['3300_3303'] = 'text:楚雄;url:javascript:category1(3303,"楚雄")';
+data['3300_3304'] = 'text:大理;url:javascript:category1(3304,"大理")';
+data['3300_3305'] = 'text:德宏;url:javascript:category1(3305,"德宏")';
+data['3300_3306'] = 'text:红河;url:javascript:category1(3306,"红河")';
+data['3300_3307'] = 'text:景洪;url:javascript:category1(3307,"景洪")';
+data['3300_3308'] = 'text:丽江;url:javascript:category1(3308,"丽江")';
+data['3300_3309'] = 'text:临沧;url:javascript:category1(3309,"临沧")';
+data['3300_3310'] = 'text:怒江;url:javascript:category1(3310,"怒江")';
+data['3300_3311'] = 'text:曲靖;url:javascript:category1(3311,"曲靖")';
+data['3300_3312'] = 'text:思茅;url:javascript:category1(3312,"思茅")';
+data['3300_3313'] = 'text:文山;url:javascript:category1(3313,"文山")';
+data['3300_3314'] = 'text:香格里拉;url:javascript:category1(3314,"香格里拉")';
+data['3300_3315'] = 'text:玉溪;url:javascript:category1(3315,"玉溪")';
+data['3300_3316'] = 'text:昭通;url:javascript:category1(3316,"昭通")';
+data['0_3400'] = 'text:浙江;url:javascript:category1(3400,"浙江")';
+data['3400_3401'] = 'text:杭州;url:javascript:category1(3401,"杭州")';
+data['3400_3402'] = 'text:湖州;url:javascript:category1(3402,"湖州")';
+data['3400_3403'] = 'text:嘉兴;url:javascript:category1(3403,"嘉兴")';
+data['3400_3404'] = 'text:金华;url:javascript:category1(3404,"金华")';
+data['3400_3405'] = 'text:丽水;url:javascript:category1(3405,"丽水")';
+data['3400_3406'] = 'text:宁波;url:javascript:category1(3406,"宁波")';
+data['3400_3407'] = 'text:衢州;url:javascript:category1(3407,"衢州")';
+data['3400_3408'] = 'text:绍兴;url:javascript:category1(3408,"绍兴")';
+data['3400_3409'] = 'text:台州;url:javascript:category1(3409,"台州")';
+data['3400_3410'] = 'text:温州;url:javascript:category1(3410,"温州")';
+data['3400_3411'] = 'text:舟山;url:javascript:category1(3411,"舟山")';
+data['300_3420'] = 'text:北京市;url:javascript:category1(3420,"北京市")';
+data['200_3421'] = 'text:澳门;url:javascript:category1(3421,"澳门")';
+data['400_3422'] = 'text:重庆市;url:javascript:category1(3422,"重庆市")';
+data['2600_3423'] = 'text:上海市;url:javascript:category1(3423,"上海市")';
+data['2800_3424'] = 'text:天津市;url:javascript:category1(3424,"天津市")';
+data['2900_3425'] = 'text:台湾;url:javascript:category1(3425,"台湾")';
+data['3100_3426'] = 'text:香港;url:javascript:category1(3426,"香港")';
+data['900_3428'] = 'text:黔西南布依族苗族自治州;url:javascript:category1(3428,"黔西南布依族苗族自治州")';
+data['3200_3430'] = 'text:奎屯市;url:javascript:category1(3430,"奎屯市")';
+data['3200_3431'] = 'text:新疆生产建设兵团;url:javascript:category1(3431,"新疆生产建设兵团")';
+
+Using("System.Web.UI.WebControls.MzTreeView");
+var tree = new MzTreeView();
+tree.dataSource = data
+tree.autoSort = false;
+tree.useCheckbox = true;
+tree.canOperate = true;
+document.write(tree.render());
+tree.expandLevel(1);
+</SCRIPT>
+				  </div>
+				</td>
+			  </tr>
+			  <tr height="40px">
+				<td align="left">
+				  <label style="font-size: 16px">&nbsp;学校机构：</label>
+				</td>
+				<td align="left">
+				  <select name="usertb.inClass" id="classId"  style="border: solid 1px #D0D0D0;width:200px"><option value="0">--请选择学校--</option></select>        	       	
+				</td>
+			  </tr>
+
+			</table>
+			<br/>
+
+            <li class="clearfix"><span>姓名：</span><input type="text" placeholder="请输入姓名" name="usertb.stuName" id="realName" class="input"></li>
+            <li class="clearfix"><span>学号：</span><input type="text" placeholder="请输入学号" id="uName" name="usertb.stuId" class="input" onkeyup="this.value = this.value.replace(/\D/g, '')" > </li>
+            <li class="clearfix"><span>密码：</span><input type="password" placeholder="请输入密码" id="uPassword" name="usertb.password" class="input"></li>
+            <li class="clearfix"><span>确认密码：</span><input type="password" placeholder="请输入确认密码" id="uPwd" name="qrpasswordna" class="input"></li>
+            <li class="clearfix"><span>联系方式：</span><input type="text" placeholder="请输入联系方式" id="phoneId" name="usertb.stuPhone" class="input" onchange="checkSjh(this.value)" ></li>
+           	<li class="clearfix"><span>身份证号：</span><input type="text" placeholder="请输入身份证号" id="stcaid" name="usertb.stuCard" class="input"></li>
+           	<li class="clearfix"><span>联系人：</span><input type="text" placeholder="请输入联系人" id="linkMan" name="usertb.stuLinkMan" class="input"></li>
+           	<li class="clearfix"><span>家庭住址：</span><input type="text" placeholder="请输入家庭住址" id="address" name="usertb.address" class="input"></li>
+			<li class="u_btn clearfix"><input type="button" class="btn red" value="注 册" onclick="return registerCheckform()"></li>          
+
+
+		  </ul>
+        </form>
+	  </div>
+	</div>
+	<div id="classShow"></div>
+
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="js/yy.js"></script>
+	<script type="text/javascript" src="js/background/users/register_apply.js"></script>
+
+  </body>
+</html>

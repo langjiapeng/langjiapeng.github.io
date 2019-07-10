@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+	<base href="http://exam.dilidasai.com:80/">
+	<title>地球小博士在线</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/media_query.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/library/jquery-ui-1.10.4.css">
+<script type="text/javascript">
+function is_mobile() {
+
+    var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+	var u = navigator.userAgent;
+	if (null == u)
+	{
+		return true;
+	}
+	var result = regex_match.exec(u);
+
+	if (null == result)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+var isclickCheck=false;
+function checkksjr(a, fenlei, subState) {
+	if (subState != "0")
+		return; 
+	if ($("#userflag").val() == 0)
+	{   //不可以进去考试    	  	 		
+		window.open("loginks!loginApply") ;
+	}
+	else
+	{ 
+		$.post("pr001ks!checkExamDate?exids=" + a, function(s) {				    
+				   if (s == "ok")
+				   {
+
+					   if (fenlei != 1)
+					   {
+						   $("#dialog-confirm").dialog({
+														   resizable: false,
+														   height:280,
+														   width:280,
+														   modal: true,
+														   buttons: {
+															   "开始考试": function() {
+																   if (isclickCheck)  //只能点击一次开始考试按钮
+																	   return;   			
+																   isclickCheck = true;
+																   location.href = "pr001ks!startExam?eid=" + a; //初赛					         
+															   },
+															   "取消": function() {
+																   $(this).dialog("close");
+															   }
+														   }
+													   });
+					   }
+					   else
+					   {
+						   location.href = "pr001ks!startExamFuSai?eid=" + a; //复赛
+					   }
+				   }
+				   else  if (s == "tologin")
+				   {
+					   alert("登录超时，请刷新重新登录！");
+				   }   				
+				   else if (s == "nostart")
+				   {
+					   alert("尚未到考试开始时间，不能进入考试！");
+				   }
+				   else if (s == "examend")
+				   {
+					   alert("考试已经截止，不能进入考试！");
+				   }
+				   else
+				   {
+					   alert("考试时间尚未设定，不能进入考试！");
+				   }
+			   });
+	}       
+}
+</script>	
+  </head>
+  <body>
+	<tr style="display:none;">
+	  <td colspan="2">
+		<input type="hidden" name="userflag" value="1" id="userflag"/>  </td>
+	</tr>
+
+
+	<div class="headerbox">
+	  <div class="wrapper clearfix">
+		<div class="logo"><a href="javascript:void(0);"><img src="images/logo.png"></a></div>
+		<ul class="navlist clearfix" id="mbulid">
+		  <li><a href="index.html" title="首页" class="menu">首页</a></li>
+
+
+
+
+		  <li><a href="loginks!userPersonal" title="个人中心" class="menu">个人中心</a></li>
+
+		  <li><a href="http://exam.dilidasai.com:80/qdks/pages/update_pwd.jsp" title="个人中心" class="menu">修改密码</a></li>
+
+		</ul>
+		<b class="top_nav"></b>
+		<ul class="m-mobile-nav">
+		  <li><span class="tit"><a href="pr001ks!listPapers">首页</a></span></li>
+
+		  <li><span class="tit"><a href="javascript:void(0);">个人中心</a></span></li>
+
+		</ul>
+		<form action="" method="get" class="search clearfix"><input name="" type="text" class="input-box" placeholder="请输入搜索关键字"><input name="" type="button" class="button"></form>
+		<div class="search_btn"><a href="javascript:void(0)"><img src="images/search_btn.jpg"></a></div>
+		<div class="user_btn">
+
+
+		  <span style="padding-right:10px;">SB 同学  您好！
+
+			&nbsp;<a href="loginks!exitLogin">退出</a>
+
+
+		</div>
+	  </div>
+	</div>
+	<div class="wrapper white_bj">
+	  <div class="flexslider">
+        <ul class="slides">
+		  <li><span style="background:url(images/banner.jpg) top center no-repeat;"><a href="javascript:void(0);"></a></span></li>
+		  <li><span style="background:url(images/banner.jpg) top center no-repeat;"><a href="javascript:void(0);"></a></span></li>
+        </ul>
+	  </div>
+
+
+	  <div class="index_box">
+    	<h3>自我测试</h3>
+        <ul>
+
+
+        </ul>
+	  </div> 
+	</div>
+	<div id="dialog-confirm" title="提示信息" style="display: none">
+	  <p><br/>
+		<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 10px 0;"></span>
+		温馨提示：<br/><br/><span style="color:red;font-size:15px"><b>答题只有一次机会，点击开始进入考试后计时开始。</b></span>
+		<br/><br/>
+		<span style="color:red;">如遇断电断网等特殊情况，请及时更换答题终端登录继续答题，在规定时间内不交卷系统会自动交卷评分！</span>
+		<br/>
+	  </p>
+	</div>
+
+	<div class="footerbox">
+	  <div class="footer">
+		<ul>
+		  <li class="hover"><a href="pr001ks!listPapers" class="home"><b></b>首页</a></li>
+		  <li>
+
+
+			<a href="http://exam.dilidasai.com:80/qdks/pages/userinfo.jsp" class="my"><b></b>个人中心</a>
+
+		  </li>
+		</ul>  
+	  </div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="js/yy.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.4.js"></script>
+<script type="text/javascript">
+
+$(function () {
+	  $("ul[id='mbulid'] li").eq(0).addClass("hover");	
+
+  })
+	
+</script>
+  </body>
+</html>

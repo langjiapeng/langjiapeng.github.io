@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+	<title>地球小博士在线</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="">
+	<meta http-equiv="description" content="">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/media_query.css" rel="stylesheet" type="text/css">
+	<link href="css/paperQues/main.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/main01.css">
+	<link rel="stylesheet" href="css/library/jquery-ui-1.10.4.css">
+	<!--<script type="text/javascript" src="js/mztreeview2/scripts/jsframework.js"></script>-->
+	<script type="text/javascript" src="js/jquery-1.4.4.js"></script>
+<script type="text/javascript">
+
+var boolapp = true;	
+function show_tree(obj) {              
+	if (boolapp)
+	{
+		var offset = $(obj).offset();    
+		$("#divPop").css({ top: offset.top + $(obj).height() + 6 + "px", left: offset.left - 2 });   
+		$("#divPop").css({display:"block"});  
+		boolapp = false;
+	}
+	else
+	{
+		$("#divPop").css({display:"none"});
+		boolapp = true;
+	}	 
+
+}
+
+function category1(id, name) {
+	$("#pcname").attr("value", name);
+	$("#pcid").attr("value", id);
+	$("#pcidTwo").attr("value", id);
+	$("#divPop").css({display:"none"});
+	//$("#checkUploadYN").hide();
+	var cityId = document.getElementById("pcid").value;
+	$.post("loginks!showSchool?cityId=" + encodeURI(cityId), function(data) {
+			   $('#schoolId').html(data);
+		   })
+	boolapp = true;
+}
+
+function is_mobile() {
+
+    var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+	var u = navigator.userAgent;
+	if (null == u)
+	{
+		return true;
+	}
+	var result = regex_match.exec(u);
+
+	if (null == result)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+function keyESubmit() {
+	var _EVENT = window.event;
+	if (_EVENT.keyCode == 13)   //回车键的键值为13
+	{
+		allCheck();
+	}
+}
+//var sflag = -1;
+function allCheck() {
+
+	var user = document.getElementById("userName");
+	var pass = document.getElementById("password");
+	var type=$("#type option:selected").val();
+
+	if (user.value == "")
+	{
+		alert("用户名不能为空");
+		user.focus();
+		return false;
+	}
+	else if (pass.value == "")
+	{
+		alert("登录密码不能为空");
+		pass.focus();
+		return false;
+	}
+	else
+	{
+	    //showweihu();
+	    //return false;    
+
+		var apporpc=0;
+		if (is_mobile())
+		{
+			apporpc = 1;
+		}
+
+		//正在登陆中
+		$("#dialog-answer").dialog({
+									   resizable: false,
+									   height:180,
+									   width:280,
+									   modal: true 
+								   });		
+
+		{			
+			window.location.href = "main.html";
+			return;
+		}
+	}
+
+}
+
+
+
+function showGrade(a) {//显示年级
+	if ($(a).val() != 0)
+	{
+		$.post("loginks!showGrade", {
+				   "upId":$(a).val()
+			   }, function(data) {
+		           $('#gradeId').html(data);
+		       }); 
+	}
+}
+
+function showClass(a) {//显示班级
+	if ($(a).val() != 0)
+	{
+		$.post("loginks!showClass", {
+				   "upId":$(a).val()
+			   }, function(data) {
+		           $('#classId').html(data);
+		       }); 
+	}
+}
+
+function showweihu() {
+	$("#dialog-confirm").dialog({
+									resizable: false,
+									height:250,
+									width:300,
+									modal: true,
+									buttons: {
+										"我知道了": function() {
+											$(this).dialog("close");
+										} 
+									}
+								});
+}
+
+</script>
+  </head>
+
+  <!-- onload="showweihu();"-->
+  <body>
+
+	<div class="headerbox">
+	  <div class="wrapper clearfix">
+		<div class="logo"><a href="javascript:void(0);"><img src="images/logo.png"></a></div>
+		<ul class="navlist clearfix" id="mbulid">
+		  <li><a href="index.html" title="首页" class="menu">首页</a></li>
+
+
+
+		  <li><a href="center.html" title="个人中心" class="menu">个人中心</a></li>  
+
+
+		</ul>
+		<b class="top_nav"></b>
+		<ul class="m-mobile-nav">
+		  <li><span class="tit"><a href="index.html">首页</a></span></li>
+
+		  <li><span class="tit"><a href="center.html">个人中心</a></span></li>
+
+		</ul>
+		<form action="" method="get" class="search clearfix"><input name="" type="text" class="input-box" placeholder="请输入搜索关键字"><input name="" type="button" class="button"></form>
+		<div class="search_btn"><a href="javascript:void(0)"><img src="images/search_btn.jpg"></a></div>
+		<div class="user_btn">
+
+
+
+
+		  <a href="loginks!zhucePage?type=0">登录</a>
+
+
+
+
+		</div>
+	  </div>
+	</div>
+	<div class="wrapper white_bj">
+	  <div class="user_box">
+    	<div class="u_img"></div>
+        <h1>用户登录</h1>
+        <form action="" method="get">
+		  <ul class="login_list">
+
+			<li class="clearfix">
+			  <span style="padding-top:10px">
+			    <span>登录角色：</span>
+        		<select name="type" id="type" style="border: solid 1px #D0D0D0;width:200px">
+				  <option value="0">学生</option>
+				  <option value="1">教师</option>
+        		</select></span>
+        	</li>
+        	<li class="clearfix"><b class="yhm"></b>
+			  <input type="text" class="input" name="userName" id="userName" title="请输入账号（学生用户为身份证号）" placeholder="请输入账号（学生用户为身份证号）" onKeypress="if ((event.keyCode >= 32event.keyCode < 48)||(event.keyCode > 57event.keyCode < 65)||(event.keyCode > 90event.keyCode < 97))event.returnValue = false;"  onkeydown="keyESubmit()"> 
+        	</li>
+            <li class="clearfix"><b class="mm"></b>
+			  <input type="password" class="input" name="password" id="password" title="请输入密码"  placeholder="请输入密码"  onpaste="return false" oncut="return false" onKeypress="if ((event.keyCode >= 32 &&event.keyCode < 48) || (event.keyCode > 57event.keyCode < 65)||(event.keyCode > 90event.keyCode < 97))event.returnValue = false;"  onkeydown="keyESubmit()">
+            </li>
+            <li class="u_btn clearfix">
+			  <input onclick="allCheck(); return false"  type="button"  style="height:44px"  class="btn red" value="登 录">
+            </li>
+            <li style="text-align:left;height:230px;margin-top:5px;">
+			  <br/>
+			  <span style="color:red">  信息提示：</span> <br/>
+			  学生登录账号为身份证号，教师登录账号为手机号。 修改密码时请牢记新密码！<br/>
+			  如存在业务问题，请咨询地球小博士在线组委会：13522836651（李老师）工作日7:00-22:00  <br/>
+			  使用系统时，如有技术问题，请联系系统运营负责人：010-61705564转810（杨老师）工作日8:30-11:30 13:30-17:30
+
+			  <br/>
+			  <br/>
+			  <a href="/QA/QA.html" target="_blank"><span style="color:blue;font-weight:bolder;font-size:18px;text-indent:2em">常见问题在线解答</span></a>
+			  <br/>	</li>
+            <li class="u_btn clearfix">
+			  <input onclick="window.open('register.html')" type="button" class="btn" value="注 册">
+            </li>
+		  </ul>
+        </form>
+	  </div>
+	</div>
+	<div id="dialog-confirm" title="提示信息" style="display: none">
+	  <p><br/>
+		<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;font-size:14px"></span>
+		<!--尊敬的用户，系统今天将进行升级维护，在此期间请勿登录系统！
+		尊敬的用户，当前在线答题人数已达到限制,系统进入错峰答题模式,请在4月30日22:00后刷新登录答题！-->
+		尊敬的用户，由于假期答题人数过多,当前在线答题人数已达到限制,如遇到登录失败，请稍后尝试,请尽量错开高峰答题时间!
+		<br/>
+		<br/>
+		<span style="color:red;font-size:14px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;
+		  <!--维护时段：2019年05月24日23:30-2019年05月25日01:30-->
+		</span>
+		<!--<br/>
+		<span style="color:red;font-size:14px;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;由于4月5日晚上系统重启，导致当时答题超时或者未交卷的初赛学生,如果成绩有偏差,请发送邮件（注明身份证号、姓名和答题时间）至系统技术支持部邮箱:254717221@qq.com或者节后工作日联系考试组委会进行核实重置。 </span>
+		-->
+		<br/>  
+	  </p>
+	</div>
+	<div id="dialog-answer" title="登录信息" style="display: none">
+	  <p><br/>
+		<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+		正在登录中，请耐心等待处理。。。<br/><br/>
+		<span id="counter"></span> 
+	  </p>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="js/yy.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.4.js"></script>
+  </body>
+</html>
