@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>2019年6月份浙江省普通高中学业水平考试成绩</title>
+	<meta charset="UTF-8">
     <link href="Style.css" rel="stylesheet" />
 <script language="Javascript">
 document.oncontextmenu = function () { event.returnValue = false; }
@@ -148,190 +149,199 @@ function change() {
 	document.getElementById("申明").style.display = "none";
 }
 
-function guanbi() {
+    //关闭按钮
+function guanbi() {  
+    document.getElementById('oImg').style.display = "block";  
+	document.getElementById("all").style.display = "none";
 	alert("咦！这个按钮怎么没用呢？别问我这个按钮为什么没用！因为这个按钮本来就没用。");
+	alert("好吧~_~这按钮有点用处！");
 }
 </script>
-  </head>
+  </head> 
+
+
   <body>  
-	<div style="font-size: 20px; font-weight: bold; margin-top: 5px; text-align: center;letter-spacing: 5px;">
-	  2019年6月份浙江省普通高中学业水平考试成绩结果
-	</div>
-	<h2 id="申明" align="center" style="color:red" >本网页仅供娱乐，请勿用于他用！</h2>
-	<div style="height: auto; margin-top: 10px;">
-	  <div class="con">
-		<font class="title2">&nbsp;&nbsp;第一部分：个人信息&nbsp;&nbsp;</font>
+	<img src='img.jpg' id="oImg" style='display:none' width="1000px" hight="1850px">
+	<div id="all">
+	  <div style="font-size: 20px; font-weight: bold; margin-top: 5px; text-align: center;letter-spacing: 5px;">
+		2019年6月份浙江省普通高中学业水平考试成绩结果
+	  </div>
+	  <h2 id="申明" align="center" style="color:red" >本网页仅供娱乐，请勿用于他用！</h2>
+	  <div style="height: auto; margin-top: 10px;">
+		<div class="con">
+		  <font class="title2">&nbsp;&nbsp;第一部分：个人信息&nbsp;&nbsp;</font>
+		  <div style="height: 3px; background-color: #6699cc;">
+		  </div>
+		  <div id="DIVZKZH" class="block">
+			<div class="blo_top">准考证号</div>
+			<div class="blo_bottom">
+			  <span id="ZKZH"></span>
+			</div>
+		  </div>
+		  <div id="DIVSFZH" class="block">
+			<div class="blo_top">身份证号</div>
+			<div class="blo_bottom">
+			  <span id="SFZH"></span>
+			</div>
+		  </div>
+		  <div id="DIVXM" class="block">
+			<div class="blo_top">姓名</div>
+			<div class="blo_bottom">
+			  <span id="XM"></span>
+			</div>
+		  </div>
+		  <div id="DIVBMXH" class="block">
+			<div class="blo_top">报名序号</div>
+			<div class="blo_bottom">
+			  <span id="BMXH"></span>
+			</div>
+		  </div>
+
+		</div>
+		<div class="con" style="margin-top: 20px; margin-bottom: 20px;">
+		  <font class="title3">&nbsp;&nbsp;第二部分：成绩信息&nbsp;&nbsp;</font>&nbsp;&nbsp;检验码:<span id="JYM"></span>
+		  <div style="height: 3px; background-color: #0080FF;">
+		  </div>
+		  <div id="DIVYWXK" class="block">
+			<div class="blo_top">语文等第</div>
+			<div class="blo_bottom">
+			  <span id="YWXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVSXXK" class="block">
+			<div class="blo_top">数学等第</div>
+			<div class="blo_bottom">
+			  <span id="SXXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVYYXK" class="block">
+			<div class="blo_top">外语等第</div>
+			<div class="blo_bottom">
+			  <span id="YYXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVSZXK" class="block">
+			<div class="blo_top">思想政治等第</div>
+			<div class="blo_bottom">
+			  <span id="SZXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVLSXK" class="block">
+			<div class="blo_top">历史等第</div>
+			<div class="blo_bottom">
+			  <span id="LSXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVDLXK" class="block">
+			<div class="blo_top">地理等第</div>
+			<div class="blo_bottom">
+			  <span id="DLXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVWLXK" class="block">
+			<div class="blo_top">物理等第</div>
+			<div class="blo_bottom">
+			  <span id="WLXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVHXXK" class="block">
+			<div class="blo_top">化学等第</div>
+			<div class="blo_bottom">
+			  <span id="HXXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVSWXK" class="block">
+			<div class="blo_top">生物等第</div>
+			<div class="blo_bottom">
+			  <span id="SWXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVJSXK" class="block">
+			<div class="blo_top">技术等第</div>
+			<div class="blo_bottom">
+			  <span id="JSXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVWYXN" class="block">
+			<div class="blo_top">外语分数</div>
+			<div class="blo_bottom">
+			  <span id="WYXN"></span>
+			</div>
+		  </div>
+		  <!--
+		  <div id="DIVSZXN" class="block">
+		  <div class="blo_top">思想政治等级分</div>
+		  <div class="blo_bottom">
+		  <span id="SZXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVLSXN" class="block">
+		  <div class="blo_top">历史等级分</div>
+		  <div class="blo_bottom">
+		  <span id="LSXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVDLXN" class="block">
+		  <div class="blo_top">地理等级分</div>
+		  <div class="blo_bottom">
+		  <span id="DLXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVWLXN" class="block">
+		  <div class="blo_top">物理等级分</div>
+		  <div class="blo_bottom">
+		  <span id="WLXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVHXXN" class="block">
+		  <div class="blo_top">化学等级分</div>
+		  <div class="blo_bottom">
+		  <span id="HXXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVSWXN" class="block">
+		  <div class="blo_top">生物等级分</div>
+		  <div class="blo_bottom">
+		  <span id="SWXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVJSXN" class="block">
+		  <div class="blo_top">技术等级分</div>
+		  <div class="blo_bottom">
+		  <span id="JSXN"></span>
+		  </div>
+		  </div>-->
+
+		</div>
+	  </div>
+	  <div class="con" style="margin-top: 20px; margin-bottom: 20px;" id="zdy">
+		<font class="title2">&nbsp;&nbsp;第三部分：自定义成绩&nbsp;&nbsp;</font>
 		<div style="height: 3px; background-color: #6699cc;">
-		</div>
-		<div id="DIVZKZH" class="block">
-		  <div class="blo_top">准考证号</div>
-		  <div class="blo_bottom">
-			<span id="ZKZH"></span>
-		  </div>
-		</div>
-		<div id="DIVSFZH" class="block">
-		  <div class="blo_top">身份证号</div>
-		  <div class="blo_bottom">
-			<span id="SFZH"></span>
-		  </div>
-		</div>
-		<div id="DIVXM" class="block">
-		  <div class="blo_top">姓名</div>
-		  <div class="blo_bottom">
-			<span id="XM"></span>
-		  </div>
-		</div>
-		<div id="DIVBMXH" class="block">
-		  <div class="blo_top">报名序号</div>
-		  <div class="blo_bottom">
-			<span id="BMXH"></span>
-		  </div>
-		</div>
+		</div><br/>
+		<a>准考证号：</a><input type="text" value="" id="ZKZHtext" >
+		<a>身份证号：</a><input type="text" value="" id="SFZHtext" ><br/><br/>
+		<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</a><input type="text" value="" id="XMtext" >
+		<a>报名序号：</a><input type="text" value="" id="BMXHtext" ><br/><br/>
 
+		<!-- 等第 -->
+		<a>语文等第：</a><input type="text" value="" id="YWXKtext" >
+		<a>数学等第：</a><input type="text" value="" id="SXXKtext" ><br/><br/>
+		<a>外语等第：</a><input type="text" value="" id="YYXKtext" >
+		<a>思政等第：</a><input type="text" value="" id="SZXKtext" ><br/><br/>
+		<a>历史等第：</a><input type="text" value="" id="LSXKtext" >
+		<a>地理等第：</a><input type="text" value="" id="DLXKtext" ><br/><br/>
+		<a>物理等第：</a><input type="text" value="" id="WLXKtext" >
+		<a>化学等第：</a><input type="text" value="" id="HXXKtext" ><br/><br/>
+		<a>生物等第：</a><input type="text" value="" id="SWXKtext" >
+		<a>技术等第：</a><input type="text" value="" id="JSXKtext" ><br/><br/>
+		<a>外语分数：</a><input type="text" value="" id="WYXNtext" >&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/>
+		<input type="button" name="Button1" value="点击开始自定义" id="Button2" class="loginInput1" onclick="change()"/><br/><br/>
 	  </div>
-	  <div class="con" style="margin-top: 20px; margin-bottom: 20px;">
-		<font class="title3">&nbsp;&nbsp;第二部分：成绩信息&nbsp;&nbsp;</font>&nbsp;&nbsp;检验码:<span id="JYM"></span>
-		<div style="height: 3px; background-color: #0080FF;">
+	  <div class="footer">
+		<input type="button" name="Button1" value="关闭页面" id="Button1" class="loginInput1" onclick="guanbi()" /><br/>
+		<div style="height: 10px;">
 		</div>
-		<div id="DIVYWXK" class="block">
-		  <div class="blo_top">语文等第</div>
-		  <div class="blo_bottom">
-			<span id="YWXK"></span>
-		  </div>
-		</div>
-		<div id="DIVSXXK" class="block">
-		  <div class="blo_top">数学等第</div>
-		  <div class="blo_bottom">
-			<span id="SXXK"></span>
-		  </div>
-		</div>
-		<div id="DIVYYXK" class="block">
-		  <div class="blo_top">外语等第</div>
-		  <div class="blo_bottom">
-			<span id="YYXK"></span>
-		  </div>
-		</div>
-		<div id="DIVSZXK" class="block">
-		  <div class="blo_top">思想政治等第</div>
-		  <div class="blo_bottom">
-			<span id="SZXK"></span>
-		  </div>
-		</div>
-		<div id="DIVLSXK" class="block">
-		  <div class="blo_top">历史等第</div>
-		  <div class="blo_bottom">
-			<span id="LSXK"></span>
-		  </div>
-		</div>
-		<div id="DIVDLXK" class="block">
-		  <div class="blo_top">地理等第</div>
-		  <div class="blo_bottom">
-			<span id="DLXK"></span>
-		  </div>
-		</div>
-		<div id="DIVWLXK" class="block">
-		  <div class="blo_top">物理等第</div>
-		  <div class="blo_bottom">
-			<span id="WLXK"></span>
-		  </div>
-		</div>
-		<div id="DIVHXXK" class="block">
-		  <div class="blo_top">化学等第</div>
-		  <div class="blo_bottom">
-			<span id="HXXK"></span>
-		  </div>
-		</div>
-		<div id="DIVSWXK" class="block">
-		  <div class="blo_top">生物等第</div>
-		  <div class="blo_bottom">
-			<span id="SWXK"></span>
-		  </div>
-		</div>
-		<div id="DIVJSXK" class="block">
-		  <div class="blo_top">技术等第</div>
-		  <div class="blo_bottom">
-			<span id="JSXK"></span>
-		  </div>
-		</div>
-		<div id="DIVWYXN" class="block">
-		  <div class="blo_top">外语分数</div>
-		  <div class="blo_bottom">
-			<span id="WYXN"></span>
-		  </div>
-		</div>
-		<!--
-		<div id="DIVSZXN" class="block">
-		<div class="blo_top">思想政治等级分</div>
-		<div class="blo_bottom">
-		<span id="SZXN"></span>
-		</div>
-		</div>
-		<div id="DIVLSXN" class="block">
-		<div class="blo_top">历史等级分</div>
-		<div class="blo_bottom">
-		<span id="LSXN"></span>
-		</div>
-		</div>
-		<div id="DIVDLXN" class="block">
-		<div class="blo_top">地理等级分</div>
-		<div class="blo_bottom">
-		<span id="DLXN"></span>
-		</div>
-		</div>
-		<div id="DIVWLXN" class="block">
-		<div class="blo_top">物理等级分</div>
-		<div class="blo_bottom">
-		<span id="WLXN"></span>
-		</div>
-		</div>
-		<div id="DIVHXXN" class="block">
-		<div class="blo_top">化学等级分</div>
-		<div class="blo_bottom">
-		<span id="HXXN"></span>
-		</div>
-		</div>
-		<div id="DIVSWXN" class="block">
-		<div class="blo_top">生物等级分</div>
-		<div class="blo_bottom">
-		<span id="SWXN"></span>
-		</div>
-		</div>
-		<div id="DIVJSXN" class="block">
-		<div class="blo_top">技术等级分</div>
-		<div class="blo_bottom">
-		<span id="JSXN"></span>
-		</div>
-		</div>-->
-
-	  </div>
+		Copyright 浙江省教育考试院通用查询系统</div>
 	</div>
-	<div class="con" style="margin-top: 20px; margin-bottom: 20px;" id="zdy">
-	  <font class="title2">&nbsp;&nbsp;第三部分：自定义成绩&nbsp;&nbsp;</font>
-	  <div style="height: 3px; background-color: #6699cc;">
-	  </div><br/>
-	  <a>准考证号：</a><input type="text" value="" id="ZKZHtext" >
-	  <a>身份证号：</a><input type="text" value="" id="SFZHtext" ><br/><br/>
-	  <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</a><input type="text" value="" id="XMtext" >
-	  <a>报名序号：</a><input type="text" value="" id="BMXHtext" ><br/><br/>
-
-	  <!-- 等第 -->
-	  <a>语文等第：</a><input type="text" value="" id="YWXKtext" >
-	  <a>数学等第：</a><input type="text" value="" id="SXXKtext" ><br/><br/>
-	  <a>外语等第：</a><input type="text" value="" id="YYXKtext" >
-	  <a>思政等第：</a><input type="text" value="" id="SZXKtext" ><br/><br/>
-	  <a>历史等第：</a><input type="text" value="" id="LSXKtext" >
-	  <a>地理等第：</a><input type="text" value="" id="DLXKtext" ><br/><br/>
-	  <a>物理等第：</a><input type="text" value="" id="WLXKtext" >
-	  <a>化学等第：</a><input type="text" value="" id="HXXKtext" ><br/><br/>
-	  <a>生物等第：</a><input type="text" value="" id="SWXKtext" >
-	  <a>技术等第：</a><input type="text" value="" id="JSXKtext" ><br/><br/>
-	  <a>外语分数：</a><input type="text" value="" id="WYXNtext" >&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/>
-	  <input type="button" name="Button1" value="点击开始自定义" id="Button2" class="loginInput1" onclick="change()"/><br/><br/>
-	</div>
-	<div class="footer">
-	  <input type="button" name="Button1" value="关闭页面" id="Button1" class="loginInput1" onclick="guanbi()" /><br/>
-	  <div style="height: 10px;">
-	  </div>
-	  Copyright 浙江省教育考试院通用查询系统</div>
   </body>
 </html>
