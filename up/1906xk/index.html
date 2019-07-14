@@ -1,107 +1,335 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+  <head>
     <title>2019年6月份浙江省普通高中学业水平考试成绩</title>
-  <meta charset="UTF-8">
     <link href="Style.css" rel="stylesheet" />
-    <script language="Javascript">
-        document.oncontextmenu = function () { event.returnValue = false; }
-        window.onhelp = function () { return false }
-        document.onkeydown = function () {
-            if ((window.event.altKey) && ((window.event.keyCode == 37) || (window.event.keyCode == 39))) { alert("不准你使用ALT+方向键前进或后退网页！"); event.returnValue = false; }
-            if ((event.keyCode == 8) || (event.keyCode == 116) || (event.ctrlKey && event.keyCode == 82)) { event.keyCode = 0; event.returnValue = false; }
-            if (event.keyCode == 122) { event.keyCode = 0; event.returnValue = false; }
-            if (event.ctrlKey && event.keyCode == 78) event.returnValue = false;
-            if (event.shiftKey && event.keyCode == 121) event.returnValue = false;
-            if (window.event.srcElement.tagName == "A" && window.event.shiftKey) window.event.returnValue = false;
-        }       
-    </script>
-</head>
-<body>
+<script language="Javascript">
+document.oncontextmenu = function () { event.returnValue = false; }
+window.onhelp = function () { return false }
+document.onkeydown = function () {
+	if ((window.event.altKey) && ((window.event.keyCode == 37) || (window.event.keyCode == 39)))
+	{ alert("不准你使用ALT+方向键前进或后退网页！"); event.returnValue = false; }
+	if ((event.keyCode == 8) || (event.keyCode == 116) || (event.ctrlKey && event.keyCode == 82))
+	{ event.keyCode = 0; event.returnValue = false; }
+	if (event.keyCode == 122)
+	{ event.keyCode = 0; event.returnValue = false; }
+	if (event.ctrlKey && event.keyCode == 78) event.returnValue = false;
+	if (event.shiftKey && event.keyCode == 121) event.returnValue = false;
+	if (window.event.srcElement.tagName == "A" && window.event.shiftKey) window.event.returnValue = false;
+}       
+function change() {
+	document.getElementById('ZKZH').innerHTML = document.getElementById("ZKZHtext").value;
+	document.getElementById('SFZH').innerHTML = document.getElementById("SFZHtext").value;
+	document.getElementById('XM').innerHTML = document.getElementById("XMtext").value;
+	document.getElementById('BMXH').innerHTML = document.getElementById("BMXHtext").value;
+
+	//语文
+	if (document.getElementById("YWXKtext").value == "")
+	{
+		document.getElementById("DIVYWXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('YWXK').innerHTML = document.getElementById("YWXKtext").value;
+	}
+
+	//数学
+	if (document.getElementById("SXXKtext").value == "")
+	{
+		document.getElementById("DIVSXXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('SXXK').innerHTML = document.getElementById("SXXKtext").value;
+	}
+
+    //外语
+	if (document.getElementById("YYXKtext").value == "")
+	{
+		document.getElementById("DIVYYXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('YYXK').innerHTML = document.getElementById("YYXKtext").value;
+	}
+
+	//思想政治
+	if (document.getElementById("SZXKtext").value == "")
+	{
+		document.getElementById("DIVSZXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('SZXK').innerHTML = document.getElementById("SZXKtext").value;
+	}
+
+	//历史
+	if (document.getElementById("LSXKtext").value == "")
+	{
+		document.getElementById("DIVLSXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('LSXK').innerHTML = document.getElementById("LSXKtext").value;
+	}
+
+	//地理
+	if (document.getElementById("DLXKtext").value == "")
+	{
+		document.getElementById("DIVDLXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('DLXK').innerHTML = document.getElementById("DLXKtext").value;
+	}
+
+	//物理
+	if (document.getElementById("WLXKtext").value == "")
+	{
+		document.getElementById("DIVWLXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('WLXK').innerHTML = document.getElementById("WLXKtext").value;
+	}
+
+	//化学
+	if (document.getElementById("HXXKtext").value == "")
+	{
+		document.getElementById("DIVHXXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('HXXK').innerHTML = document.getElementById("WLXKtext").value;
+	}
+
+	//生物
+	if (document.getElementById("SWXKtext").value == "")
+	{
+		document.getElementById("DIVSWXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('SWXK').innerHTML = document.getElementById("WLXKtext").value;
+	}
+
+	//技术
+	if (document.getElementById("JSXKtext").value == "")
+	{
+		document.getElementById("DIVJSXK").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('JSXK').innerHTML = document.getElementById("JSXKtext").value;
+	}
+
+	//外语
+	if (document.getElementById("WYXNtext").value == "")
+	{
+		document.getElementById("DIVWYXN").style.display = "none";
+	}
+	else
+	{
+		document.getElementById('WYXN').innerHTML = document.getElementById("WYXNtext").value;
+	}
+}
+</script>
+  </head>
+  <body>
     <form name="form1" method="post" action="resault.aspx" id="form1">
-<div>
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTA1OTE1NDM0N2RkzdPfHXyQfh1y4urSVtQRcofpyY7gJXCDOcd0pLgdF3o=" />
-</div>
+	  <div>
+		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTA1OTE1NDM0N2RkzdPfHXyQfh1y4urSVtQRcofpyY7gJXCDOcd0pLgdF3o=" />
+	  </div>
 
-<div>
+	  <div>
 
-	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAgKR29q1BgKM54rGBt06RbtGeepuDouLCcWsHghmf0DnrcxHmV/NzDIDn94A" />
-</div>
-    <div style="font-size: 20px; font-weight: bold; margin-top: 5px; text-align: center;
+		<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAgKR29q1BgKM54rGBt06RbtGeepuDouLCcWsHghmf0DnrcxHmV/NzDIDn94A" />
+	  </div>
+	  <div style="font-size: 20px; font-weight: bold; margin-top: 5px; text-align: center;
         letter-spacing: 5px;">
         2019年6月份浙江省普通高中学业水平考试成绩结果
-    </div>
-    <div style="height: auto; margin-top: 10px;">
+	  </div>
+	  <div style="height: auto; margin-top: 10px;">
         <div class="con">
-            <font class="title2">&nbsp;&nbsp;第一部分：个人信息&nbsp;&nbsp;</font>
-            <div style="height: 3px; background-color: #6699cc;">
-            </div>
-            <div id="DIVZKZH" class="block">
-<div class="blo_top">准考证号</div>
-<div class="blo_bottom">
-<span id="ZKZH">1968007904</span>
-</div>
-</div>
-<div id="DIVSFZH" class="block">
-<div class="blo_top">身份证号</div>
-<div class="blo_bottom">
-<span id="SFZH">331082200111047214</span>
-</div>
-</div>
-<div id="DIVXM" class="block">
-<div class="blo_top">姓名</div>
-<div class="blo_bottom">
-<span id="XM">郎嘉鹏</span>
-</div>
-</div>
-<div id="DIVBMXH" class="block">
-<div class="blo_top">报名序号</div>
-<div class="blo_bottom">
-<span id="BMXH">810812</span>
-</div>
-</div>
+		  <font class="title2">&nbsp;&nbsp;第一部分：个人信息&nbsp;&nbsp;</font>
+		  <div style="height: 3px; background-color: #6699cc;">
+		  </div>
+		  <div id="DIVZKZH" class="block">
+			<div class="blo_top">准考证号</div>
+			<div class="blo_bottom">
+			  <span id="ZKZH"></span>
+			</div>
+		  </div>
+		  <div id="DIVSFZH" class="block">
+			<div class="blo_top">身份证号</div>
+			<div class="blo_bottom">
+			  <span id="SFZH"></span>
+			</div>
+		  </div>
+		  <div id="DIVXM" class="block">
+			<div class="blo_top">姓名</div>
+			<div class="blo_bottom">
+			  <span id="XM"></span>
+			</div>
+		  </div>
+		  <div id="DIVBMXH" class="block">
+			<div class="blo_top">报名序号</div>
+			<div class="blo_bottom">
+			  <span id="BMXH"></span>
+			</div>
+		  </div>
 
         </div>
         <div class="con" style="margin-top: 20px; margin-bottom: 20px;">
-            <font class="title3">&nbsp;&nbsp;第二部分：成绩信息&nbsp;&nbsp;</font>&nbsp;&nbsp;检验码:<span id="JYM">dxye47517sdvy14422dedgv41475dthbxse42</span>
-            <div style="height: 3px; background-color: #0080FF;">
-            </div>
-            <div id="DIVYWXK" class="block">
-<div class="blo_top">语文等第</div>
-<div class="blo_bottom">
-<span id="YWXK">A</span>
-</div>
-</div>
-
-
-
-
-<div id="DIVSWXK" class="block">
-<div class="blo_top">生物等第</div>
-<div class="blo_bottom">
-<span id="SWXK">A</span>
-</div>
-</div>
-<div id="DIVJSXK" class="block">
-<div class="blo_top">技术等第</div>
-<div class="blo_bottom">
-<span id="JSXK">A</span>
-</div>
-</div>
-
-
-
-
-
+		  <font class="title3">&nbsp;&nbsp;第二部分：成绩信息&nbsp;&nbsp;</font>&nbsp;&nbsp;检验码:<span id="JYM"></span>
+		  <div style="height: 3px; background-color: #0080FF;">
+		  </div>
+		  <div id="DIVYWXK" class="block">
+			<div class="blo_top">语文等第</div>
+			<div class="blo_bottom">
+			  <span id="YWXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVSXXK" class="block">
+			<div class="blo_top">数学等第</div>
+			<div class="blo_bottom">
+			  <span id="SXXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVYYXK" class="block">
+			<div class="blo_top">外语等第</div>
+			<div class="blo_bottom">
+			  <span id="YYXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVSZXK" class="block">
+			<div class="blo_top">思想政治等第</div>
+			<div class="blo_bottom">
+			  <span id="SZXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVLSXK" class="block">
+			<div class="blo_top">历史等第</div>
+			<div class="blo_bottom">
+			  <span id="LSXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVDLXK" class="block">
+			<div class="blo_top">地理等第</div>
+			<div class="blo_bottom">
+			  <span id="DLXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVWLXK" class="block">
+			<div class="blo_top">物理等第</div>
+			<div class="blo_bottom">
+			  <span id="WLXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVHXXK" class="block">
+			<div class="blo_top">化学等第</div>
+			<div class="blo_bottom">
+			  <span id="HXXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVSWXK" class="block">
+			<div class="blo_top">生物等第</div>
+			<div class="blo_bottom">
+			  <span id="SWXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVJSXK" class="block">
+			<div class="blo_top">技术等第</div>
+			<div class="blo_bottom">
+			  <span id="JSXK"></span>
+			</div>
+		  </div>
+		  <div id="DIVWYXN" class="block">
+			<div class="blo_top">外语分数</div>
+			<div class="blo_bottom">
+			  <span id="WYXN"></span>
+			</div>
+		  </div>
+		  <!--
+		  <div id="DIVSZXN" class="block">
+		  <div class="blo_top">思想政治等级分</div>
+		  <div class="blo_bottom">
+		  <span id="SZXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVLSXN" class="block">
+		  <div class="blo_top">历史等级分</div>
+		  <div class="blo_bottom">
+		  <span id="LSXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVDLXN" class="block">
+		  <div class="blo_top">地理等级分</div>
+		  <div class="blo_bottom">
+		  <span id="DLXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVWLXN" class="block">
+		  <div class="blo_top">物理等级分</div>
+		  <div class="blo_bottom">
+		  <span id="WLXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVHXXN" class="block">
+		  <div class="blo_top">化学等级分</div>
+		  <div class="blo_bottom">
+		  <span id="HXXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVSWXN" class="block">
+		  <div class="blo_top">生物等级分</div>
+		  <div class="blo_bottom">
+		  <span id="SWXN"></span>
+		  </div>
+		  </div>
+		  <div id="DIVJSXN" class="block">
+		  <div class="blo_top">技术等级分</div>
+		  <div class="blo_bottom">
+		  <span id="JSXN"></span>
+		  </div>
+		  </div>-->
 
         </div>
-    </div>
+	  </div>
 
-    <div class="footer">
+	  <div class="footer">
         <input type="submit" name="Button1" value="关闭页面" id="Button1" class="loginInput1" />
         <br/>
-        <div style="height: 10px;">
+		<div style="height: 10px;">
         </div>
         Copyright 浙江省教育考试院通用查询系统</div>
     </form>
-</body>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<center>
+	  <input type="button" name="Button1" value="自定义成绩" id="Button2" class="loginInput1" onclick="change()"/><br/><br/>
+	  <a>准考证号：</a><input type="text" value="" id="ZKZHtext" ><br/><br/>
+	  <a>身份证号：</a><input type="text" value="" id="SFZHtext" ><br/><br/>
+	  <a>姓名：</a><input type="text" value="" id="XMtext" ><br/><br/>
+	  <a>报名序号：</a><input type="text" value="" id="BMXHtext" ><br/><br/>
+
+
+
+
+	  <a>语文等第：</a><input type="text" value="" id="YWXKtext" ><br/><br/>
+	  <a>数学等第：</a><input type="text" value="" id="SXXKtext" ><br/><br/>
+	  <a>外语等第：</a><input type="text" value="" id="YYXKtext" ><br/><br/>
+	  <a>思想政治等第：</a><input type="text" value="" id="SZXKtext" ><br/><br/>
+	  <a>历史等第：</a><input type="text" value="" id="LSXKtext" ><br/><br/>
+	  <a>地理等第：</a><input type="text" value="" id="DLXKtext" ><br/><br/>
+	  <a>物理等第：</a><input type="text" value="" id="WLXKtext" ><br/><br/>
+	  <a>化学等第：</a><input type="text" value="" id="HXXKtext" ><br/><br/>
+	  <a>生物等第：</a><input type="text" value="" id="SWXKtext" ><br/><br/>
+	  <a>技术等第：</a><input type="text" value="" id="JSXKtext" ><br/><br/>
+	  <a>外语分数：</a><input type="text" value="" id="WYXNtext" ><br/><br/>
+
+
+	</center>
+  </body>
 </html>
