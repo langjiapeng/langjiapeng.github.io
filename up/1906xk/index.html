@@ -17,6 +17,7 @@ document.onkeydown = function () {
 	if (window.event.srcElement.tagName == "A" && window.event.shiftKey) window.event.returnValue = false;
 }       
 function change() {
+    //个人信息
 	document.getElementById('ZKZH').innerHTML = document.getElementById("ZKZHtext").value;
 	document.getElementById('SFZH').innerHTML = document.getElementById("SFZHtext").value;
 	document.getElementById('XM').innerHTML = document.getElementById("XMtext").value;
@@ -131,6 +132,19 @@ function change() {
 	{
 		document.getElementById('WYXN').innerHTML = document.getElementById("WYXNtext").value;
 	}
+
+	//32位校验码
+	function guid2() {
+		function S4() {
+			return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+		}
+		return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
+	}
+
+	document.getElementById('JYM').innerHTML = guid2();
+	
+	//自定义消失
+	document.getElementById("zdy").style.display = "none";
 }
 </script>
   </head>
@@ -297,39 +311,31 @@ function change() {
 	  </div>
 
 	  <div class="footer">
-        <input type="submit" name="Button1" value="关闭页面" id="Button1" class="loginInput1" />
+        <input type="submit" name="Button1" value="关闭页面" id="Button1" class="loginInput1" /><br/><br/>
+		<center id="zdy">
+		  <input type="button" name="Button1" value="自定义成绩" id="Button2" class="loginInput1" onclick="change()"/><br/><br/>
+		  <a>准考证号：</a><input type="text" value="" id="ZKZHtext" ><br/><br/>
+		  <a>身份证号：</a><input type="text" value="" id="SFZHtext" ><br/><br/>
+		  <a>姓名：</a><input type="text" value="" id="XMtext" ><br/><br/>
+		  <a>报名序号：</a><input type="text" value="" id="BMXHtext" ><br/><br/>
+
+		  <!-- 等第 -->
+		  <a>语文等第：</a><input type="text" value="" id="YWXKtext" ><br/><br/>
+		  <a>数学等第：</a><input type="text" value="" id="SXXKtext" ><br/><br/>
+		  <a>外语等第：</a><input type="text" value="" id="YYXKtext" ><br/><br/>
+		  <a>思想政治等第：</a><input type="text" value="" id="SZXKtext" ><br/><br/>
+		  <a>历史等第：</a><input type="text" value="" id="LSXKtext" ><br/><br/>
+		  <a>地理等第：</a><input type="text" value="" id="DLXKtext" ><br/><br/>
+		  <a>物理等第：</a><input type="text" value="" id="WLXKtext" ><br/><br/>
+		  <a>化学等第：</a><input type="text" value="" id="HXXKtext" ><br/><br/>
+		  <a>生物等第：</a><input type="text" value="" id="SWXKtext" ><br/><br/>
+		  <a>技术等第：</a><input type="text" value="" id="JSXKtext" ><br/><br/>
+		  <a>外语分数：</a><input type="text" value="" id="WYXNtext" ><br/><br/>
+		</center>
         <br/>
 		<div style="height: 10px;">
         </div>
         Copyright 浙江省教育考试院通用查询系统</div>
     </form>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<center>
-	  <input type="button" name="Button1" value="自定义成绩" id="Button2" class="loginInput1" onclick="change()"/><br/><br/>
-	  <a>准考证号：</a><input type="text" value="" id="ZKZHtext" ><br/><br/>
-	  <a>身份证号：</a><input type="text" value="" id="SFZHtext" ><br/><br/>
-	  <a>姓名：</a><input type="text" value="" id="XMtext" ><br/><br/>
-	  <a>报名序号：</a><input type="text" value="" id="BMXHtext" ><br/><br/>
-
-
-
-
-	  <a>语文等第：</a><input type="text" value="" id="YWXKtext" ><br/><br/>
-	  <a>数学等第：</a><input type="text" value="" id="SXXKtext" ><br/><br/>
-	  <a>外语等第：</a><input type="text" value="" id="YYXKtext" ><br/><br/>
-	  <a>思想政治等第：</a><input type="text" value="" id="SZXKtext" ><br/><br/>
-	  <a>历史等第：</a><input type="text" value="" id="LSXKtext" ><br/><br/>
-	  <a>地理等第：</a><input type="text" value="" id="DLXKtext" ><br/><br/>
-	  <a>物理等第：</a><input type="text" value="" id="WLXKtext" ><br/><br/>
-	  <a>化学等第：</a><input type="text" value="" id="HXXKtext" ><br/><br/>
-	  <a>生物等第：</a><input type="text" value="" id="SWXKtext" ><br/><br/>
-	  <a>技术等第：</a><input type="text" value="" id="JSXKtext" ><br/><br/>
-	  <a>外语分数：</a><input type="text" value="" id="WYXNtext" ><br/><br/>
-
-
-	</center>
   </body>
 </html>
