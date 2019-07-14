@@ -1,171 +1,25 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html lang="zh-CN">
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>2019年6月份浙江省普通高中学业水平考试成绩</title>
-	<meta charset="UTF-8">
     <link href="Style.css" rel="stylesheet" />
-<script language="Javascript">
-document.oncontextmenu = function () { event.returnValue = false; }
-window.onhelp = function () { return false }
-document.onkeydown = function () {
-	if ((window.event.altKey) && ((window.event.keyCode == 37) || (window.event.keyCode == 39)))
-	{ alert("不准你使用ALT+方向键前进或后退网页！"); event.returnValue = false; }
-	if ((event.keyCode == 8) || (event.keyCode == 116) || (event.ctrlKey && event.keyCode == 82))
-	{ event.keyCode = 0; event.returnValue = false; }
-	if (event.keyCode == 122)
-	{ event.keyCode = 0; event.returnValue = false; }
-	if (event.ctrlKey && event.keyCode == 78) event.returnValue = false;
-	if (event.shiftKey && event.keyCode == 121) event.returnValue = false;
-	if (window.event.srcElement.tagName == "A" && window.event.shiftKey) window.event.returnValue = false;
-};    
-function change() {
-    //个人信息
-	document.getElementById('ZKZH').innerHTML = document.getElementById("ZKZHtext").value;
-	document.getElementById('SFZH').innerHTML = document.getElementById("SFZHtext").value;
-	document.getElementById('XM').innerHTML = document.getElementById("XMtext").value;
-	document.getElementById('BMXH').innerHTML = document.getElementById("BMXHtext").value;
+  </head>
+  <body>
 
-	//语文
-	if (document.getElementById("YWXKtext").value == "")
-	{
-		document.getElementById("DIVYWXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('YWXK').innerHTML = document.getElementById("YWXKtext").value;
-	}
-
-	//数学
-	if (document.getElementById("SXXKtext").value == "")
-	{
-		document.getElementById("DIVSXXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('SXXK').innerHTML = document.getElementById("SXXKtext").value;
-	}
-
-    //外语
-	if (document.getElementById("YYXKtext").value == "")
-	{
-		document.getElementById("DIVYYXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('YYXK').innerHTML = document.getElementById("YYXKtext").value;
-	}
-
-	//思想政治
-	if (document.getElementById("SZXKtext").value == "")
-	{
-		document.getElementById("DIVSZXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('SZXK').innerHTML = document.getElementById("SZXKtext").value;
-	}
-
-	//历史
-	if (document.getElementById("LSXKtext").value == "")
-	{
-		document.getElementById("DIVLSXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('LSXK').innerHTML = document.getElementById("LSXKtext").value;
-	}
-
-	//地理
-	if (document.getElementById("DLXKtext").value == "")
-	{
-		document.getElementById("DIVDLXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('DLXK').innerHTML = document.getElementById("DLXKtext").value;
-	}
-
-	//物理
-	if (document.getElementById("WLXKtext").value == "")
-	{
-		document.getElementById("DIVWLXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('WLXK').innerHTML = document.getElementById("WLXKtext").value;
-	}
-
-	//化学
-	if (document.getElementById("HXXKtext").value == "")
-	{
-		document.getElementById("DIVHXXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('HXXK').innerHTML = document.getElementById("WLXKtext").value;
-	}
-
-	//生物
-	if (document.getElementById("SWXKtext").value == "")
-	{
-		document.getElementById("DIVSWXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('SWXK').innerHTML = document.getElementById("SWXKtext").value;
-	}
-
-	//技术
-	if (document.getElementById("JSXKtext").value == "")
-	{
-		document.getElementById("DIVJSXK").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('JSXK').innerHTML = document.getElementById("JSXKtext").value;
-	}
-
-	//外语
-	if (document.getElementById("WYXNtext").value == "")
-	{
-		document.getElementById("DIVWYXN").style.display = "none";
-	}
-	else
-	{
-		document.getElementById('WYXN').innerHTML = document.getElementById("WYXNtext").value;
-	}
-
-	//32位校验码
-	function guid2() {
-		function S4() {
-			return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-		}
-		return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
-	}
-
-	document.getElementById('JYM').innerHTML = guid2();
-
-	//自定义消失
-	document.getElementById("zdy").style.display = "none";
-	document.getElementById("申明").style.display = "none";
-}
-
-    //关闭按钮
-function guanbi() {  
-    document.getElementById('oImg').style.display = "block";  
-	document.getElementById("all").style.display = "none";
-	alert("This is a surprise!");
-}
-</script>
-  </head> 
-
-
-  <body>  
+	<!-- 图片弹出 -->
 	<img src='img.jpg' id="oImg" style='display:none' width="1000px" hight="1850px">
+
+	<!-- 标题 -->
 	<div id="all">
-	  <div style="font-size: 20px; font-weight: bold; margin-top: 5px; text-align: center;letter-spacing: 5px;">
-		2019年6月份浙江省普通高中学业水平考试成绩结果
-	  </div>
+	  <div style="font-size: 20px; font-weight: bold; margin-top: 5px; text-align: center;letter-spacing: 5px;">2019年6月份浙江省普通高中学业水平考试成绩结果</div>
+
+	  <!-- 申明 -->
 	  <h2 id="申明" align="center" style="color:red" >本网页仅供娱乐，请勿用于他用！</h2>
+
 	  <div style="height: auto; margin-top: 10px;">
 		<div class="con">
 		  <font class="title2">&nbsp;&nbsp;第一部分：个人信息&nbsp;&nbsp;</font>
@@ -267,59 +121,18 @@ function guanbi() {
 			  <span id="WYXN"></span>
 			</div>
 		  </div>
-		  <!--
-		  <div id="DIVSZXN" class="block">
-		  <div class="blo_top">思想政治等级分</div>
-		  <div class="blo_bottom">
-		  <span id="SZXN"></span>
-		  </div>
-		  </div>
-		  <div id="DIVLSXN" class="block">
-		  <div class="blo_top">历史等级分</div>
-		  <div class="blo_bottom">
-		  <span id="LSXN"></span>
-		  </div>
-		  </div>
-		  <div id="DIVDLXN" class="block">
-		  <div class="blo_top">地理等级分</div>
-		  <div class="blo_bottom">
-		  <span id="DLXN"></span>
-		  </div>
-		  </div>
-		  <div id="DIVWLXN" class="block">
-		  <div class="blo_top">物理等级分</div>
-		  <div class="blo_bottom">
-		  <span id="WLXN"></span>
-		  </div>
-		  </div>
-		  <div id="DIVHXXN" class="block">
-		  <div class="blo_top">化学等级分</div>
-		  <div class="blo_bottom">
-		  <span id="HXXN"></span>
-		  </div>
-		  </div>
-		  <div id="DIVSWXN" class="block">
-		  <div class="blo_top">生物等级分</div>
-		  <div class="blo_bottom">
-		  <span id="SWXN"></span>
-		  </div>
-		  </div>
-		  <div id="DIVJSXN" class="block">
-		  <div class="blo_top">技术等级分</div>
-		  <div class="blo_bottom">
-		  <span id="JSXN"></span>
-		  </div>
-		  </div>-->
-
 		</div>
 	  </div>
+
 	  <div class="con" style="margin-top: 20px; margin-bottom: 20px;" id="zdy">
 		<font class="title2">&nbsp;&nbsp;第三部分：自定义成绩&nbsp;&nbsp;</font>
 		<div style="height: 3px; background-color: #6699cc;">
 		</div><br/>
+
+		<!-- 个人信息部分 -->
 		<a>准考证号：</a><input type="text" value="" id="ZKZHtext" >
 		<a>身份证号：</a><input type="text" value="" id="SFZHtext" ><br/><br/>
-		<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</a><input type="text" value="" id="XMtext" >
+		<a>&emsp;&emsp;姓名：</a><input type="text" value="" id="XMtext" >
 		<a>报名序号：</a><input type="text" value="" id="BMXHtext" ><br/><br/>
 
 		<!-- 等第 -->
@@ -334,13 +147,16 @@ function guanbi() {
 		<a>生物等第：</a><input type="text" value="" id="SWXKtext" >
 		<a>技术等第：</a><input type="text" value="" id="JSXKtext" ><br/><br/>
 		<a>外语分数：</a><input type="text" value="" id="WYXNtext" >&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/>
+
+		<!-- 自定义按钮 -->
 		<input type="button" name="Button1" value="点击开始自定义" id="Button2" class="loginInput1" onclick="change()"/><br/><br/>
 	  </div>
+
+	  <!-- 页脚 -->
 	  <div class="footer">
 		<input type="button" name="Button1" value="关闭页面" id="Button1" class="loginInput1" onclick="guanbi()" /><br/>
-		<div style="height: 10px;">
-		</div>
-		Copyright 浙江省教育考试院通用查询系统</div>
+		<div style="height: 10px;"></div>Copyright 浙江省教育考试院通用查询系统</div>
 	</div>
+	<script type='text/javascript' src='Style.js'></script>
   </body>
 </html>
