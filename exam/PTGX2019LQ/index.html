@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>浙江省2019年招生录取结果查询</title>
+    <link href="../Style.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <form name="form1" method="post" action="resault.aspx" id="form1">
+	  <div>
+		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNDMyMzUxNjMwZGSJtwl/fOPeA/Cr/9leIY8GtioKK5wmJ8ET0S8EyGsOLA==" />
+	  </div>
+
+	  <div style="font-size: 20px; font-weight: bold; margin-top: 5px; text-align: center;
+        letter-spacing: 5px;">
+        浙江省2019年招生录取结果查询结果
+	  </div>
+	  <div style="height: auto; margin-top: 10px;">
+        <div class="con">
+		  <font class="title2">&nbsp;&nbsp;第一部分：个人信息&nbsp;&nbsp;</font>
+		  <div style="height: 3px; background-color: #6699cc;">
+		  </div>
+		  <div id="DIVZKZH" class="block">
+			<div class="blo_top">
+			  准考证号</div>
+			<div class="blo_bottom">
+			  <span id="ZKZH"></span>
+			</div>
+		  </div>
+
+		  <div id="DIVXM" class="block">
+			<div class="blo_top">
+			  姓名</div>
+			<div class="blo_bottom">
+			  <span id="XM"></span>
+			</div>
+		  </div>
+        </div>
+        <div class="con" style="margin-top: 20px; margin-bottom: 20px;">
+
+		  <font class="title3">&nbsp;&nbsp;第二部分：成绩信息&nbsp;&nbsp;</font>
+		  <div style="height: 3px; background-color: #0080FF;">
+		  </div>
+		  <div id="DIVLQXX" class="block">
+			<div class="blo_top">
+			  录取学校</div>
+			<div class="blo_bottom">
+			  <span id="LQXX"></span>
+			</div>
+		  </div>
+		  <div id="DIVLQZY" class="block">
+			<div class="blo_top">
+			  录取专业</div>
+			<div class="blo_bottom">
+			  <span id="LQZY"></span>
+
+			</div>
+		  </div>
+		  <div id="DIVLQZT" class="block">
+			<div class="blo_top">
+			  录取状态</div>
+			<div class="blo_bottom">
+			  <span id="LQZT"></span>
+			</div>
+		  </div>
+        </div>
+	  </div>
+<script type="text/javascript">
+
+var can = document.createElement('canvas');
+var body = document.body;
+
+body.appendChild(can);
+
+can.width = 120;
+can.height = 45;
+can.style.display = 'none';
+
+
+var cans = can.getContext('2d');
+cans.rotate(-10 * Math.PI / 180);
+cans.font = "14px Microsoft JhengHei"; 
+cans.fillStyle = "rgba(8, 8, 8, 0.2)";
+cans.textAlign = 'left'; 
+cans.textBaseline = 'Middle';
+cans.fillText(tempdd, can.width / 100, can.height * 3 / 4);
+
+var x = document.getElementsByClassName("blo_bottom");
+var i;
+for (i = 0; i < x.length; i++)
+{
+    x[i].style.backgroundImage = "url(" + can.toDataURL("image/png") + ")";
+
+}
+
+
+
+</script>
+	  <div class="footer">
+        Copyright 浙江省教育考试院通用查询系统</div>
+    </form>
+  </body>
+</html>

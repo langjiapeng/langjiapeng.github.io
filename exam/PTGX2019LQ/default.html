@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>浙江省2019年招生录取结果查询</title>
+    <link href="../Style.css" rel="stylesheet" />
+<script language="javascript" type="text/javascript">
+function validate() {
+	for (var i = 0; i < document.form1.elements.length - 1; i++)
+	{
+		if (document.form1.elements[i].value == "")
+		{
+			alert("当前表单不能有空项");
+			document.form1.elements[i].focus();
+			return false;
+		}
+		return true;
+	}
+}       
+</script>
+  </head>
+  <body>
+	<form name="form1" action="resault.aspx" method="post" onsubmit="return validate()">
+	  <div class="bg">
+        <div id="log_left">
+		  浙江省2019年招生录取结果查询
+		  <div  align="right" style="font-size:16px;font-weight:bold; color:#ff0000;padding-top:20px;">录取结果最后更新时间2019年7月15日</div>
+        </div>
+        <div id="log_middle">
+        </div>
+        <div id="log_right">
+		  <div id="log_right_content">
+            <label>准考证号：</label>
+			<input id="ZKZH" name="ZKZH" class="loginInput" value="" />
+
+			</br>
+			<label>密&nbsp;&nbsp;&nbsp;码：</label>
+			<input type="password" id="PASSWORD" name="PASSWORD" class="loginInput" value="" />
+
+			</br>
+            验证码：
+			<input id="yzm" name="yzm" class="loginInput" style="width:103px" type="text" onfocus="this.style.borderColor = '#3366ff'" onblur="this.style.borderColor = '#999'" />
+			<img id="imgVerify" src="https://cx.zjzs.net/INC/VerifyCode.aspx" alt="看不清？点击更换" onclick=" this.src = this.src + '?'; " />
+
+			</br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="btnSubmit" class="loginInput1" type="submit" value="开始查询" />
+			<br />
+		  </div>
+
+		</div>
+	  </div>
+	  <div  align="center" style="font-size:16px;font-weight:bold; color:#ff0000;padding-top:20px;">考生查询密码为考生报名系统密码，如有遗忘密码问题请联系当地报名点重置密码后登陆报名系统查询!</div>
+	  <div class="footer">建议使用浏览器：IE8以上或Firefox,分辨率建议：1024*768以上</br> 版权所有：2015浙江省教育考试院</div>
+	</form>
+  </body>
+</html>
+
