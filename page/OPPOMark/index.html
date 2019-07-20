@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<title>软件商店</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+	<link rel="stylesheet" href="index.css" type="text/css" />
+  </head>
+  <body>
+<script>
+			(function (doc, win) {
+				var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					if (clientWidth >= 1080) {
+						docEl.style.fontSize = '100px';
+					}else {
+						docEl.style.fontSize = 100 * (clientWidth / 1080) + 'px';
+					}
+				};
+				if (!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);    	
+			})(document, window); 
+</script>
+<script type="text/template" id="tpl">
+			<%for (var i=0;i<data.length;i++){var temp = data[i];%>
+				<li>
+					<img class="app-icon" src="<%=temp.icon%>" />
+					<p class="app-name txt-line"><%=temp.appNm%></p>
+					<h3 class="smalltext txt-line"><%=temp.dlDesc%></h3>
+					<div class="download-btn" statistics-expose adv-id="<%=temp.cpdId%>" adv-pkg="<%=temp.pkg%>" modId="<%=temp.modId%>"  adv-pos="265_11209_11211_<%=11213+i%>" adv-passthrough=<%=temp.json%>>
+						<span class="text" id="<%=temp.pkg%>-1"><%=temp.initTxt%></span>
+						<%if (temp.initProgress == '100.0%'){%>
+							<span class="progress" style="width:<%=temp.initProgress%>;border-radius:0.68rem" id="<%=temp.pkg%>">
+							<%}else{%>
+								<span class="progress" style="width:<%=temp.initProgress%>;" id="<%=temp.pkg%>">
+							<%}%>	
+							<em id="<%=temp.pkg%>-2"><%=temp.initTxt%></em>
+						</span>		
+					</div>
+				</li>
+			<%}%>
+</script>
+<script type="text/template" id="tpl2">
+			<%var index = document.querySelectorAll("#top-list-area li").length;%>
+			<%for (var i=0;i<data.length;i++){var temp = data[i];var ids = index+i;%>
+				<li>
+					<img class="app-icon" src="<%=temp.icon%>"/>
+					<div class="app-cont">
+						<div class="texts">
+							<h3 class="app-name txt-line"><%-temp.appNm%></h3>
+							<p class="star-size"><span class="star"><span style="width: <%=temp.grade*20%>%;"></span></span>&nbsp;&nbsp;<%=temp.szDesc%></p>
+							<h2 class="smalltext txt-line"><%=temp.dlDesc%></h2>
+						</div>
+						<div class="download-btn" modId="<%=temp.modId%>" statistics-expose adv-id="<%=temp.cpdId%>" adv-pkg="<%=temp.pkg%>"  adv-pos="265_11209_11211_11217:<%=ids%>" adv-passthrough=<%=temp.json%>>
+							<span class="text" id="<%=temp.pkg%>-1"><%=temp.initTxt%></span>
+							<%if (temp.initProgress == '100.0%'){%>
+							<span class="progress" style="width:<%=temp.initProgress%>;border-radius:0.68rem" id="<%=temp.pkg%>">
+							<%}else{%>
+								<span class="progress" style="width:<%=temp.initProgress%>;" id="<%=temp.pkg%>">
+							<%}%>	
+								<em id="<%=temp.pkg%>-2"><%=temp.initTxt%></em>
+							</span>						 
+							
+						</div>
+					</div>							
+				</li>
+			<%}%>
+</script>
+
+	<div class="main">	
+	  <div class="app-list">
+		<div class="app-search" statistics-expose adv-id  adv-pos="265_11209_11211_11219" adv-passthrough>
+		  <input type="text" value="" name="" />
+		  <p class="note"><span>应用搜索</span></p>
+		</div>
+
+		<div class="list-one" id="list-one">
+		  <h2 class="title cf">
+			<span class="fl">装机必备</span>
+			<a class="more fr" href="requireList.html?tid=web2"></a>
+		  </h2>
+		  <ul class="cf essential-list" id="essential-list">
+			<div class="error-tip" id="error-tip1">服务器异常，请刷新重试</div>
+			<div class="loading-div" id="loading-div1"><span class="loading"></span>加载中...</div>	
+		  </ul>			 	  	    
+		</div>
+
+		<div class="list-two"  id="list-two">
+		  <h2 class="title">今日排行</h2>
+		  <div id="top-list-area">
+		  </div>
+		  <div class="error-tip" id="error-tip2">服务器异常，请刷新重试</div>
+
+		  <p class="end-msg" id="end-div">到底了，没有更多数据了...！</p>
+		  <div class="loading-div" id="loading-div2"><span class="loading"></span>加载中...</div>
+		</div>
+
+		<div class="blank-tip" id="blank-tip">无资源</div> 	 
+	  </div>
+	</div>
+
+	<script type="text/javascript" src="zepto.min.js" ></script>
+	<script type="text/javascript" src="underscore-min.js" ></script>
+	<script type="text/javascript" src="bridge.js" ></script>
+	<script type="text/javascript" src="index.js" ></script>
+  </body>
+</html>
