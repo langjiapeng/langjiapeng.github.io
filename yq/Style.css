@@ -1,0 +1,387 @@
+
+    .own{
+      font-size: 0.253rem;
+      color: #7d7d7d;
+      text-align: center;
+      line-height: 2;
+      margin: .2rem 0;
+    }
+    *{margin:0;padding:0}
+    html,body{
+      width:100%;
+      background: white;
+      padding-bottom: 1rem;
+      position: relative;
+    }
+    #map_container{
+      width:100vw;
+      height:450px;
+      z-index: 999999999;
+    }
+    .time{
+      color: #313131;
+      font-size: .3rem;
+      margin-top: .24rem;
+      margin-left: 0.4rem;
+    }
+    .time span{
+      color: #626262;
+    }
+    .flex{
+      display: flex;
+    }
+    .count{
+      align-items: center;
+      justify-content: center;
+      margin-top: .4rem;
+      margin-bottom: .4rem;
+    }
+    .count>div{
+      margin-right: 1.507rem;
+      text-align: center;
+    }
+    .count>div:last-child{
+      margin-right: 0;
+      font-size: 0.32rem;
+      color: #313131;
+    }
+    .count>div p{
+      font-size: 0.627rem;
+      font-weight: bold;
+      margin-bottom: 0.053rem;
+    }
+    .red{
+      color: #e60012;
+    }
+    .green{
+      color: #23793d;
+    }
+    .gray{
+      color: #626262;
+    }
+    a,a:link,a:visited{
+      text-decoration: none;
+    }
+    .anchor_layer .nav_wrap{
+      width: 100vw;
+      height: 0.9rem;
+      overflow: hidden;
+      display: flex;
+      background: white;
+      margin-bottom: .2rem;
+    }
+    .anchor_layer .nav_wrap.navFix{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      min-width: 100vw;
+      z-index: 9999999989;
+      padding-top: .2rem;
+    }
+    .anchor_layer .nav_wrap .wrap_layer{
+      width: 100%;
+      height: 0.9rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .anchor_layer .wrap_tab{
+      margin-right: 0.787rem;
+      height: 100%;
+    }
+    .anchor_layer .wrap_tab a{
+      color: #313131;
+      height: 100%;
+      font-size: 0.347rem;
+      display: block;
+    }
+    .anchor_layer .wrap_tab:last-child{
+      margin-right: 0;
+    }
+    .anchor_layer .active{
+      color: #000 !important;
+      font-size: 0.373rem !important;
+      font-weight: bold;
+      position: relative;
+    }
+    .anchor_layer .active:after{
+      content: '';
+      width: 0.413rem;
+      height: 0.093rem;
+      background: #0047ff;
+      border-radius: 0.133rem;
+      display: block;
+      position: absolute;
+      left: .55rem;
+      bottom: .2rem;
+    }
+    #b,#c,#d{
+      width: 8.987rem;
+      margin: 0 auto;
+      margin-top: 0.667rem;
+    }
+    #a .detail{
+      width: 8.987rem;
+      border-radius: 0.133rem;
+      margin: 0 auto;
+      margin-top: -.4rem;
+      background: #ebebeb;
+    }
+    #a .detail .row{
+      width: 8.28rem;
+      height: 0.96rem;
+      line-height: 0.96rem;
+      margin: 0 auto;
+      box-sizing: border-box;
+      color: #434343;
+      font-size: 0.32rem;
+      border-bottom: 1px solid #b5b5b5;
+    }
+    #a .detail .row:last-child{
+      border-bottom: none;
+    }
+    #a .detail .row span{
+      color: #313131;
+      font-weight: bold;
+      margin-right: 0.373rem;
+    }
+    #a .detail .sub{
+      width: 100%;
+      padding-left: 0.4rem;
+      background: #f6f6f6;
+      border-bottom: none !important;
+      position: relative;
+      border-top-left-radius: 0.133rem;
+      border-top-right-radius: 0.133rem;
+    }
+    #a .detail .sub img{
+      width: 0.28rem;
+      height: 0.133rem;
+      position: absolute;
+      right: 0.467rem;
+      top: 0.4rem;
+    }
+    .cont>h1{
+      color: #0047ff;
+      font-size: .4rem;
+      position: relative;
+      padding-left: 0.173rem;
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cont>h1:after{
+      content: '';
+      position: absolute;
+      width: 0.053rem;
+      height: 0.4rem;
+      background: #0047ff;
+      border-radius: 0.067rem;
+      left: 0;
+      top: .1rem;
+    }
+    #b .lists{
+      position: relative;
+    }
+    #b .lists .list{
+      margin-bottom: .4rem;
+      position: relative;
+      margin-left: -.05rem;
+    }
+    #b .lists:after{
+      content: '';
+      position: absolute;
+      left: .02rem;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background: #bfbfbf;
+      z-index: 123456;
+    }
+    #b .lists .list h1{
+      color: #626262;
+      font-size: 0.32rem;
+      margin-bottom: 0.2rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    #b .lists .list h1:before{
+      content: '';
+      width: 0.2rem;
+      height: 0.2rem;
+      background: #0047ff;
+      border-radius: 50%;
+      margin-right: 0.267rem;
+      z-index: 99999999;
+    }
+    #b .lists .list h1 img{
+      width: 0.6rem;
+      height: 0.267rem;
+      vertical-align: baseline;
+      margin-left: .1rem;
+    }
+    #b .lists .list div{
+      width: 8.5rem;
+      background: #f7f7f7;
+      padding: 0.307rem;
+      margin-left: .45rem;
+    }
+    #b .lists .list div .title,#b .lists .list div .source{
+      color: #252525;
+      font-size: 0.373rem;
+      font-weight: bold;
+    }
+    #b .lists .list div .content{
+      color: #494949;
+      font-size: 0.32rem;
+      line-height: 1.5;
+      margin: 0.2rem auto;
+    }
+    #c .bugs div{
+      margin-left: .22rem;
+      padding-bottom: .3rem;
+      border-bottom: 1px dashed #eeeeee;
+      margin-bottom: 0.267rem;
+    }
+    #c div .title,#c div .source{
+      color: #313131;
+      font-size: 0.347rem;
+      font-weight: bold;
+    }
+    #b .lists .list div .source{
+      color: #959595;
+    }
+    #c div .source{
+      color: #959595;
+    }
+    #c div .content{
+      color: #5b5b5b;
+      font-size: 0.293rem;
+      line-height: 1.5;
+      margin: 0.2rem auto;
+    }
+    #d .item{
+      color: #5b5b5b;
+      font-size: 0.293rem;
+      padding-bottom: 0.293rem;
+      padding-top: 0.293rem;
+      border-bottom: 1px dashed #eeeeee;
+      line-height: 1.5;
+      margin-left: .2rem;
+    }
+    #d .item:nth-child(2){
+      padding-top: 0;
+    }
+    #d .item:last-child{
+      border-bottom: none;
+    }
+    .tip{
+      text-align: left;
+      margin-left: .35rem;
+    }
+    .tip img{
+      width: 8.107rem;
+      height: 0.32rem;
+    }
+    .logo{
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 0.4rem;
+      padding-right: 0.55rem;
+      margin-top: .3rem;
+    }
+    .logo img{
+      width: 9rem;
+      height: 1.52rem;
+    }
+    .logo div{
+      width: 1.813rem;
+      height: 0.613rem;
+      line-height: 0.613rem;
+      color: white;
+      font-size: 0.32rem;
+      background: #22ac38;
+      border-radius: 0.267rem;
+      text-align: center;
+    }
+    .bottom{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 1.333rem;
+      border-top: 1px solid #eeeeee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0.427rem;
+      background: white;
+      z-index: 999999999;
+    }
+    .bottom .share{
+      width: 2.427rem;
+      height: 1.013rem;
+      line-height: 1.013rem;
+      color: white;
+      font-size: 0.373rem;
+      text-align: center;
+      background: #0047ff;
+      border-radius: 0.533rem;
+    }
+    .bottom .heart{
+      width: 6.547rem;
+      height: 1.013rem;
+      line-height: 1.013rem;
+      color: white;
+      font-size: 0.373rem;
+      text-align: center;
+      background: #f26031;
+      border-radius: 0.533rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bottom .heart img{
+      width: 0.32rem;
+      height: 0.293rem;
+      margin-left: .2rem;
+    }
+    .bottom canvas{
+      display: none;
+      position: absolute;
+      bottom: 1.2rem;
+      right: 2rem;
+      z-index: 20;
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    .shadow{
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,.5);
+      top: 0;
+      left: 0;
+      display: none;
+      z-index: 99999999999;
+    }
+    .shadow img{
+      width: 4.187rem;
+      height: 1.52rem;
+      position: absolute;
+      right: 0.573rem;
+      top: 0.133rem;
+    }
+    #map_container{
+      width: 8.987rem;
+      margin: auto;
+    }
+    .more{
+      color: #a0a0a0;
+      font-size: 0.32rem;
+    }
